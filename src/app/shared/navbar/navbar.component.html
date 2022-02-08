@@ -1,0 +1,12 @@
+<div style="z-index: 3000;" class="navbar shadow-lg  mb-2 fixed  w-full bg-gradient-to-r backdrop-blur-lg from-purple-500 to-purple-700  hover:to-yellow-500 text-neutral-content ">
+    <div class="px-2 mx-2 navbar-start">
+      <a routerLink="/">  <span class="text-lg font-bold">PubMarkStore</span> </a>
+    </div>
+    <div class="hidden px-2 lg:flex">
+        <div class="flex items-stretch">
+          <app-navbar-item routerLink="/submission/register" [routeName]="'Services'">  </app-navbar-item>
+          <app-navbar-item routerLink="/Marketplace" class="ml-4 rounded-lg" [routeName]="'Hosting'"> </app-navbar-item>
+          <app-navbar-item routerLink="/admin/login" class="ml-4 rounded-lg" [routeName]="'Contact'"> </app-navbar-item>
+        </div>
+    </div>
+</div>
