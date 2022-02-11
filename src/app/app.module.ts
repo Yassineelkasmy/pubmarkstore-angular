@@ -11,6 +11,7 @@ import { ExclusiveComponent } from './views/landing/components/exclusive/exclusi
 import { FeatureComponent } from './shared/feature/feature.component';
 import { ServicesComponent } from './views/landing/components/services/services.component';
 import { ServiceComponent } from './shared/service/service.component';
+import { LovelyTextComponent } from './shared/lovely-text/lovely-text.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ServiceComponent } from './shared/service/service.component';
     FeatureComponent,
     ServicesComponent,
     ServiceComponent,
+    LovelyTextComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent implements OnInit {
 
@@ -11,5 +10,10 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  @Input() icon:String = ''
+  @Input() color:String = ''
+  @Input() title:String = ''
+  @Input() text:String = ''
 
 }
