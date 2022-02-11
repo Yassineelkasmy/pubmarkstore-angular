@@ -12,6 +12,7 @@ import { FeatureComponent } from './shared/feature/feature.component';
 import { ServicesComponent } from './views/landing/components/services/services.component';
 import { ServiceComponent } from './shared/service/service.component';
 import { LovelyTextComponent } from './shared/lovely-text/lovely-text.component';
+import { ContactComponent } from './views/landing/components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { LovelyTextComponent } from './shared/lovely-text/lovely-text.component'
     ServicesComponent,
     ServiceComponent,
     LovelyTextComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
