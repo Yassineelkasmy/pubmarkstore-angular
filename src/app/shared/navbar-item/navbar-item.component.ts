@@ -15,5 +15,6 @@ export class NavbarItemComponent implements OnInit {
 
   @Input()
   routeName = '';
+  route= '';
 
 }
