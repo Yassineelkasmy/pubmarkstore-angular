@@ -1,4 +1,5 @@
-<div class="my-auto grid grid-cols-2 space-x-5 w-full py-24 px-10 text-white">
+<div class="pt-32 bg-indigo-600">
+  <div class="grid grid-cols-2 space-x-5 w-full py-24 px-10 text-white">
     <div data-aos="fade-right"
     data-aos-offset="200"
     data-aos-anchor-placement="center-bottom" class="px-5 py-10">
@@ -20,7 +21,82 @@
     </div>
     <div data-aos="fade-left"
     data-aos-offset="200"
-    data-aos-anchor-placement="center-bottom" class="px-20 py-10 -mt-5">
-        <img src="../../../../../assets/images/hero-animation-04.svg" alt="">
+    data-aos-anchor-placement="center-bottom" class="px-20 py-10 -mt-5"
+   >
+    <div class="w-full relative">
+        <img class="svg4 w-8/12 absolute right-2" src="../../../../../assets/images/hero-animation-04.svg" alt="">
+        <img class="svg1 w-2/12 absolute left-20" src="../../../../../assets/images/hero-animation-01.svg" alt="">
+        <img class="md:invisible lg:visible svg2 w-2/12 absolute right-20 top-32" src="../../../../../assets/images/hero-animation-02.svg" alt="">
+        <img class="svg3 w-4/12 absolute left-20 top-28" src="../../../../../assets/images/hero-animation-03.svg" alt="">
+      </div>
     </div>
 </div>
+</div>
+
+<style>
+    .svg4{
+  animation-name: shake4;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+.svg3{
+  animation-name: shake3;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+.svg2{
+  animation-name: shake2;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+.svg1{
+  animation-name: shake1;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  animation-direction: alternate;
+}
+@keyframes shake1 {
+  from{
+    transform: initial;
+  }
+  to {
+    transform:translateY(30px) ;
+  }
+}
+@keyframes shake2 {
+  from{
+    transform: initial;
+  }
+  to {
+    transform:translateY(-30px) ;
+  }
+}
+@keyframes shake3 {
+  from{
+    transform: initial;
+  }
+  to {
+    transform:translateY(-20px) ;
+  }
+}
+@keyframes shake4 {
+  from{
+    transform: initial;
+  }
+  to {
+    transform:translateY(-40px) ;
+  }
+}
+
+</style>

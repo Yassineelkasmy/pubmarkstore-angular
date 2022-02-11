@@ -7,6 +7,10 @@ import { LandingComponent } from './views/landing/landing.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NavbarItemComponent } from './shared/navbar-item/navbar-item.component';
 import { TopComponent } from './views/landing/components/top/top.component';
+import { ExclusiveComponent } from './views/landing/components/exclusive/exclusive.component';
+import { FeatureComponent } from './shared/feature/feature.component';
+import { ServicesComponent } from './views/landing/components/services/services.component';
+import { ServiceComponent } from './shared/service/service.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import { TopComponent } from './views/landing/components/top/top.component';
     NavbarComponent,
     NavbarItemComponent,
     TopComponent,
+    ExclusiveComponent,
+    FeatureComponent,
+    ServicesComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,
