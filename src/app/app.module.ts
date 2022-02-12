@@ -13,6 +13,7 @@ import { ServicesComponent } from './views/landing/components/services/services.
 import { ServiceComponent } from './shared/service/service.component';
 import { LovelyTextComponent } from './shared/lovely-text/lovely-text.component';
 import { ContactComponent } from './views/landing/components/contact/contact.component';
+import { FooterComponent } from './views/landing/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ContactComponent } from './views/landing/components/contact/contact.com
     ServiceComponent,
     LovelyTextComponent,
     ContactComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
