@@ -14,6 +14,10 @@ import { ServiceComponent } from './shared/service/service.component';
 import { LovelyTextComponent } from './shared/lovely-text/lovely-text.component';
 import { ContactComponent } from './views/landing/components/contact/contact.component';
 import { FooterComponent } from './views/landing/components/footer/footer.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,12 @@ import { FooterComponent } from './views/landing/components/footer/footer.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
