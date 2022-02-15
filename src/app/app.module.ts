@@ -23,6 +23,8 @@ import { AccountComponent } from './views/account/account.component';
 import { DashboardComponent } from './views/account/dashboard/dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProjectsComponent } from './views/account/dashboard/projects/projects.component';
+import { CreateprojectComponent } from './views/account/dashboard/projects/createproject/createproject.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     LoginComponent,
     AccountComponent,
     DashboardComponent,
+    ProjectsComponent,
+    CreateprojectComponent,
   ],
   imports: [
     BrowserModule,
