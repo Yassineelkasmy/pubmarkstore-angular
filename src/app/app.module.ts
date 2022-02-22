@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProjectsComponent } from './views/account/dashboard/projects/projects.component';
 import { CreateprojectComponent } from './views/account/dashboard/projects/createproject/createproject.component';
+import { ProjectItemComponent } from './views/account/dashboard/projects/createproject/project-item/project-item.component';
+import { CreateProjectItemComponent } from './views/account/dashboard/projects/createproject/create-project-item/create-project-item.component';
+import { ProjectComponent } from './views/account/dashboard/project/project.component';
+import { ProjectMenuItemComponent } from './shared/project-menu-item/project-menu-item.component';
+import { OverviewComponent } from './views/account/dashboard/project/overview/overview.component';
+import { OverviewItemComponent } from './views/account/dashboard/project/overview/overview-item/overview-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +51,12 @@ import { CreateprojectComponent } from './views/account/dashboard/projects/creat
     DashboardComponent,
     ProjectsComponent,
     CreateprojectComponent,
+    ProjectItemComponent,
+    CreateProjectItemComponent,
+    ProjectComponent,
+    ProjectMenuItemComponent,
+    OverviewComponent,
+    OverviewItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +65,8 @@ import { CreateprojectComponent } from './views/account/dashboard/projects/creat
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

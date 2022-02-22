@@ -1,0 +1,38 @@
+<p class="text-3xl font-semibold mb-10">
+    {{ projectService.currentProject?.name }}
+</p>
+
+<div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10">
+   
+    <app-overview-item
+    [title]="'Users'" 
+    [text]="'Authenticate and Manage your users'" 
+    [image]="'users'">
+    </app-overview-item>
+
+    <app-overview-item
+    [title]="'Aanalytics'" 
+    [text]="'Measure and analyse user engagement'" 
+    [image]="'analytics'">
+    </app-overview-item>
+ 
+    <app-overview-item
+    [title]="'Messaging'" 
+    [text]="'Send messgages to engage the right users at the right moment'" 
+    [image]="'messaging'">
+    </app-overview-item>
+   
+    <app-overview-item 
+    [title]="'Push Notifications'" 
+    [text]="'Engage the right users at the right moment'" 
+    [image]="'cloudmessaging'">
+    </app-overview-item>
+
+    <app-overview-item 
+    [title]="'Scalabale'" 
+    [text]="'Support millions of users and pay as you go'" 
+    [image]="'hosting'">
+    </app-overview-item>
+
+    
+</div>

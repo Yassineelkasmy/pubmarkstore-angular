@@ -6,6 +6,8 @@ import { UnAuthGuard } from './guards/unauth.guard';
 import { LoginComponent } from './shared/login/login.component';
 import { AccountComponent } from './views/account/account.component';
 import { DashboardComponent } from './views/account/dashboard/dashboard.component';
+import { OverviewComponent } from './views/account/dashboard/project/overview/overview.component';
+import { ProjectComponent } from './views/account/dashboard/project/project.component';
 import { CreateprojectComponent } from './views/account/dashboard/projects/createproject/createproject.component';
 import { ProjectsComponent } from './views/account/dashboard/projects/projects.component';
 import { LandingComponent } from './views/landing/landing.component';
@@ -25,6 +27,16 @@ const routes: Routes = [
           {
             path: 'projects',
             component: ProjectsComponent,
+          },
+          {
+            path: 'project/:name',
+            component: ProjectComponent,
+            children: [
+              {
+                path: 'overview',
+                component: OverviewComponent,
+              },
+            ],
           },
         ],
       },

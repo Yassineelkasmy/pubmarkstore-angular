@@ -1,6 +1,6 @@
-<div class="h-screen w-full text-white">
-    <div class="h-3/4 bg-indigo-600 pl-36 pt-20 flex justify-around">
-        <div class="w-1/2 flex flex-col space-y-5">
+<div class="h-screen min-h-screen w-full text-white">
+    <div *ngIf="!userHasProjects" class="h-3/4 bg-indigo-600 pl-36 pt-20 flex justify-around">
+        <div class="sm:w-full md:w-1/2 flex flex-col space-y-5">
             <p class="mt-5 text-3xl font-semibold">
                 Welcome to Pubmarkstore
             </p>
@@ -14,6 +14,42 @@
                 Create a project
             </button>
         </div>
-        <img class="w-80 h-80" src="../../../../../assets/images/project.png" alt="" srcset="">
+        <img class="sm:invisible md:visible w-80 h-80" src="../../../../../assets/images/project.png" alt="" srcset="">
     </div>
+    <div *ngIf="userHasProjects" class="h-2/5 bg-indigo-600 pt-10 relative">
+        <img class="absolute right-10 sm:invisible md:visible w-64 h-5w-64" src="../../../../../assets/images/projects.png" alt="" srcset="">
+        
+        <div class="sm:mx-16 md:mx-24 lg:mx-32 mt-20">
+            <p class="mb-5 text-2xl font-semibold">
+                Recent projects
+            </p>
+            <div class="w-full h-full grid sm:grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-5 text-gray-900">
+
+                <app-create-project-item></app-create-project-item>
+                    
+                <app-project-item *ngFor="let project of projects" [project]="project"></app-project-item>
+            </div>
+
+        
+        </div>
+        
+    </div>
+    <div class="mt-64 sm:mx-16 md:mx-24 lg:mx-32 flex justify-between text-base text-gray-600">
+        <p>
+            Language
+        </p>
+        <div class="flex space-x-2">
+            <p>
+                Support
+            </p>
+            <p>
+                Terms
+            </p>
+            <p>
+                Privacy policy
+            </p>
+        </div>
+    </div>
+    
+
 </div>
