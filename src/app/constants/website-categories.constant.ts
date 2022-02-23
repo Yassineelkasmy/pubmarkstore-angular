@@ -1,0 +1,18 @@
+export const WebsiteCategories: string[] = [
+  'Online Store',
+  'Portfolio',
+  'Consultant',
+  'Landing page',
+  'Booking',
+  'Blog',
+  'Artist',
+  'Music & Studio',
+  'Food delivery',
+  'Restaurant',
+  'Education',
+  'Technology Company',
+  'Gaming site',
+  'Videos & Streaming',
+  'Chat & Rooms',
+  'Video Meeting',
+];

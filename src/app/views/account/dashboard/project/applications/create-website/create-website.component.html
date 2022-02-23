@@ -1,0 +1,83 @@
+<div class="w-full h-screen relative">
+    <div class="flex text-2xl text-gray-600 space-x-10">
+        <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
+        <p class="my-auto">
+            Create a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
+        </p>
+    </div>
+
+    <form [formGroup]="createWebAppForm" class="mt-16 font-semibold">
+        <div *ngIf="currentStep.step==1" class="text-center flex flex-col text-2xl">
+            <div>
+                <p>
+                    Give it a name
+                </p>
+                <p class="text-lg text-gray-600 font-normal">
+                    You can change it anytime
+                </p>
+                <input formControlName="name" type="text" placeholder="Enter a name for your website" class="my-5 text-xl large-input  w-10/12 mx-auto">
+            </div>
+           <div class="mt-10">
+            <p>
+                What is it about?
+            </p>
+            <input formControlName="description" type="text" placeholder="Enter a small description" class="my-5 text-xl large-input w-10/12 mx-auto">
+           </div>
+        </div>
+
+        <div *ngIf="currentStep.step==2" class="text-center flex flex-col text-2xl">
+            
+                <p>
+                    What kind of website are you creating?
+                </p>
+                <p class="text-lg text-gray-600 font-normal">
+                    Select one or more categories
+                </p>
+                <div class="mt-10 grid grid-cols-4 gap-y-5">
+                    <div *ngFor="let category of websiteCategories" class="form-control">
+                        <label class="cursor-pointer label justify-start space-x-4">
+                          <span class="label-text text-lg">{{ category }}</span>
+                          <input type="checkbox"  class="checkbox checkbox-primary">
+                        </label>
+                    </div>
+                </div>
+                
+           
+        </div>
+        <div *ngIf="currentStep.step==3" class="text-center flex flex-col  text-2xl">
+            
+            <p>
+                Connect to a domain name
+            </p>
+            <p class="text-lg text-gray-600 font-normal">
+                Give us a domain name and we will register it for you
+            </p>
+            <div class="flex">
+                <input (change)="domainAvailable=false" formControlName="domain" type="text" placeholder="Enter a domain name; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
+                <button *ngIf="chekingDomain" class="mt-12 btn loading normal-case">Cheking</button>
+                <button (click)="checkDomain()" [disabled]="!domainValid()" *ngIf="!chekingDomain && !domainAvailable" class="mt-12 btn bg-indigo-600 normal-case">Check</button>
+
+            </div>
+        </div>
+
+    </form>
+
+    <div class="absolute left-0 right-0 bottom-40 w-full flex justify-around">
+        <button (click)="goBack()" [disabled]="isFirstStep()" class="cursor-pointer tracking-wider underline underline-offset-8 text-base text-gray-800 btn normal-case bg-transparent hover:bg-transparent border-none hover:text-indigo-600  my-auto">
+             Back
+        </button>
+
+        <button (click)="nextStep()" *ngIf="!isLastStep()" [disabled]="!currentStep.canContinue()" class="btn border-none rounded-full btn-wide tracking-wider text-base btn-primary normal-case bg-indigo-600">
+            Next
+        </button>
+
+        <button *ngIf="isLastStep()" [disabled]="!currentStep.canContinue()" class="btn border-none rounded-full btn-wide tracking-wider text-base btn-primary normal-case bg-indigo-600">
+            Create
+        </button>
+
+        <button [disabled]="!currentStep.canSkip" (click)="nextStep()" class="cursor-pointer tracking-wider underline underline-offset-8 text-base text-gray-800 btn normal-case bg-transparent hover:bg-transparent border-none hover:text-indigo-600  my-auto">
+            Skip
+        </button>
+       
+    </div>
+</div>

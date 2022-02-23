@@ -7,10 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProjectMenuItemComponent implements OnInit {
   constructor() {}
 
-  @Input() route?: string;
   @Input() title?: string;
-  @Input() activeIcon?: string;
+  @Input() route?: string;
   @Input() icon?: string;
+  @Input() activeIcon?: string;
 
   ngOnInit(): void {}
 }

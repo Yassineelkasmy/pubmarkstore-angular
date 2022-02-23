@@ -6,6 +6,8 @@ import { UnAuthGuard } from './guards/unauth.guard';
 import { LoginComponent } from './shared/login/login.component';
 import { AccountComponent } from './views/account/account.component';
 import { DashboardComponent } from './views/account/dashboard/dashboard.component';
+import { ApplicationsComponent } from './views/account/dashboard/project/applications/applications.component';
+import { CreateWebsiteComponent } from './views/account/dashboard/project/applications/create-website/create-website.component';
 import { OverviewComponent } from './views/account/dashboard/project/overview/overview.component';
 import { ProjectComponent } from './views/account/dashboard/project/project.component';
 import { CreateprojectComponent } from './views/account/dashboard/projects/createproject/createproject.component';
@@ -35,6 +37,14 @@ const routes: Routes = [
               {
                 path: 'overview',
                 component: OverviewComponent,
+              },
+              {
+                path: 'applications',
+                component: ApplicationsComponent,
+              },
+              {
+                path: 'createwebapp',
+                component: CreateWebsiteComponent,
               },
             ],
           },

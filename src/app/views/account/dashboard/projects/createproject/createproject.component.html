@@ -13,14 +13,14 @@
             <p class="mt-36">
                 Let`s start with a name for your project
             </p>
-            <input formControlName="name"  type="text" placeholder="Enter a project name" class="mt-10 text-indigo-600 text-2xl font-semibold text-wide bg-gray-50 input input-bordered input-lg w-3/4">
+            <input formControlName="name"  type="text" placeholder="Enter a project name" class="mt-10 large-input w-3/4">
         </div>
 
         <div *ngIf="currentStep==steps[1]">
             <p class="mt-36">
                 What are you going to create inside this project ?
             </p>
-            <textarea formControlName="description" type="text" placeholder="Enter a description for your business" class="mt-10  text-indigo-600 text-2xl font-semibold text-wide bg-gray-50 textarea textarea-bordered w-full"></textarea>
+            <textarea formControlName="description" type="text" placeholder="Enter a description for your business" class="mt-10  large-input textarea textarea-bordered w-full h-28"></textarea>
 
         </div>
 
@@ -28,8 +28,8 @@
             <p class="mt-36">
                 Does this project belongs to an organization ?
             </p>
-            <input formControlName="company_name" type="text" placeholder="Company name" class="mt-10 text-indigo-600 text-2xl font-semibold input-bordered text-wide bg-gray-50 input input-lg w-3/4">
-            <input formControlName="company_website" type="text" placeholder="Website if possible" class="mt-10 text-indigo-600 text-2xl font-semibold text-wide bg-gray-50 input input-bordered input-lg w-3/4">
+            <input formControlName="company_name" type="text" placeholder="Company name" class="mt-10 large-input w-3/4">
+            <input formControlName="company_website" type="text" placeholder="Website if possible" class="mt-10 large-input w-3/4">
         </div>
 
         <div *ngIf="currentStep==steps[3]">
@@ -40,8 +40,8 @@
                 We are going to use these informations to contact you 
                 outside our platform
             </p>
-            <input formControlName="email" type="text" placeholder="Enter an email address" class="mt-10 text-indigo-600 text-2xl font-semibold input-bordered text-wide bg-gray-50 input input-lg w-3/4">
-            <input formControlName="phone" type="text" placeholder="Enter a phone number" class="mt-10 text-indigo-600 text-2xl font-semibold text-wide bg-gray-50 input input-bordered input-lg w-3/4">
+            <input formControlName="email" type="text" placeholder="Enter an email address" class="mt-10 large-input w-3/4">
+            <input formControlName="phone" type="text" placeholder="Enter a phone number" class="mt-10 large-input w-3/4">
         </div>
 
         <div *ngIf="currentStep==steps[4]">
@@ -52,25 +52,25 @@
                 We can use these accounts to get some informations about
                 your project
             </p>
-            <input formControlName="facebook" type="text" placeholder="Enter a LinkedIn account link" class="mt-10 text-indigo-600 text-xl font-semibold input-bordered text-wide bg-gray-50 input w-full">
-            <input formControlName="instagram" placeholder="Enter a Facebook page link" class="mt-10 text-indigo-600 text-xl font-semibold text-wide bg-gray-50 input input-bordered w-full">
-            <input formControlName="linkedin" placeholder="Enter an Instagram page link" class="mt-10 text-indigo-600 text-xl font-semibold text-wide bg-gray-50 input input-bordered w-full">
+            <input formControlName="facebook" type="text" placeholder="Enter a LinkedIn account link" class="mt-10 large-input text-xl w-full">
+            <input formControlName="instagram" placeholder="Enter a Facebook page link" class="mt-10 large-input text-xl w-full">
+            <input formControlName="linkedin" placeholder="Enter an Instagram page link" class="mt-10 large-input text-xl w-full">
         </div>
 
         
 
         <div class="flex space-x-4">
-            <button [disabled]="!currentStep.canContinue()" *ngIf="!isLastStep && !currentStep.canSkip" (click)="nextStep() " routerLink="/account/dashboard/projects/create" class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
+            <button [disabled]="!currentStep.canContinue()" *ngIf="!isLastStep && !currentStep.canSkip" (click)="nextStep()" class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
                 Continue
             </button>
-            <button *ngIf="!isLastStep && currentStep.canSkip" (click)="nextStep() " routerLink="/account/dashboard/projects/create" class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
+            <button *ngIf="!isLastStep && currentStep.canSkip" (click)="nextStep() "  class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
                 Skip
             </button>
-            <button [disabled]="!createProjectForm.valid" (click)="submitProject()" *ngIf="isLastStep"  routerLink="/account/dashboard/projects/create" class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
+            <button [disabled]="!createProjectForm.valid" (click)="submitProject()" *ngIf="isLastStep" class="mt-10 w-1/3 px-10 btn btn-primary bg-indigo-600 border-none normal-case">
                 Create
             </button>
 
-            <button *ngIf="!isFirstStep" (click)="goBack()" routerLink="/account/dashboard/projects/create" class="mt-10 w-1/3 px-10 btn btn-accent  border-none normal-case">
+            <button *ngIf="!isFirstStep" (click)="goBack()"  class="mt-10 w-1/3 px-10 btn btn-accent border-none normal-case">
                 Go back
             </button>
         </div>

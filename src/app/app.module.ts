@@ -29,9 +29,13 @@ import { CreateprojectComponent } from './views/account/dashboard/projects/creat
 import { ProjectItemComponent } from './views/account/dashboard/projects/createproject/project-item/project-item.component';
 import { CreateProjectItemComponent } from './views/account/dashboard/projects/createproject/create-project-item/create-project-item.component';
 import { ProjectComponent } from './views/account/dashboard/project/project.component';
-import { ProjectMenuItemComponent } from './shared/project-menu-item/project-menu-item.component';
+import { ProjectMenuItemComponent } from './views/account/dashboard/project/project-menu-item/project-menu-item.component';
+
 import { OverviewComponent } from './views/account/dashboard/project/overview/overview.component';
 import { OverviewItemComponent } from './views/account/dashboard/project/overview/overview-item/overview-item.component';
+import { ApplicationsComponent } from './views/account/dashboard/project/applications/applications.component';
+import { CreateAppItemComponent } from './views/account/dashboard/project/applications/create-app-item/create-app-item.component';
+import { CreateWebsiteComponent } from './views/account/dashboard/project/applications/create-website/create-website.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +61,9 @@ import { OverviewItemComponent } from './views/account/dashboard/project/overvie
     ProjectMenuItemComponent,
     OverviewComponent,
     OverviewItemComponent,
+    ApplicationsComponent,
+    CreateAppItemComponent,
+    CreateWebsiteComponent,
   ],
   imports: [
     BrowserModule,

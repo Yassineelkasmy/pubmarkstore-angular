@@ -13,7 +13,7 @@ export class CreateprojectComponent implements OnInit {
   constructor(private projectService: ProjectService) {
     this.createProjectForm = new FormGroup({
       name: new FormControl('', [
-        Validators.minLength(10),
+        Validators.minLength(5),
         Validators.maxLength(30),
         Validators.required,
       ]),

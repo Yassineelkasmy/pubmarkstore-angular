@@ -9,3 +9,9 @@
   src: local("Open Sans"),
     url(./assets/fonts/OpenSans-Regular.ttf) format("ttf");
 }
+
+@layer components {
+  .large-input {
+    @apply text-indigo-600 text-2xl font-semibold tracking-wide bg-gray-50 input input-bordered input-lg;
+  }
+}
