@@ -53,15 +53,23 @@
                 Give us a domain name and we will register it for you
             </p>
             <div class="flex">
-                <input (change)="domainAvailable=false" formControlName="domain" type="text" placeholder="Enter a domain name; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
+                <input (change)="domainAvailable=false; domainFailed = false" formControlName="domain" type="text" placeholder="Enter a domain name; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
                 <button *ngIf="chekingDomain" class="mt-12 btn loading normal-case">Cheking</button>
                 <button (click)="checkDomain()" [disabled]="!domainValid()" *ngIf="!chekingDomain && !domainAvailable" class="mt-12 btn bg-indigo-600 normal-case">Check</button>
 
             </div>
+            <p *ngIf="domainFailed" class="mt-5 text-error">
+                Domain Unavailable
+            </p>
+            <p *ngIf="domainAvailable" class="mt-5 text-info">
+                Domain Available
+            </p>
         </div>
 
     </form>
-
+    <p *ngIf="currentStep.canSkip" class="mt-10 text-lg text-center text-gray-600 font-normal">
+        You can skip this step
+    </p>
     <div class="absolute left-0 right-0 bottom-40 w-full flex justify-around">
         <button (click)="goBack()" [disabled]="isFirstStep()" class="cursor-pointer tracking-wider underline underline-offset-8 text-base text-gray-800 btn normal-case bg-transparent hover:bg-transparent border-none hover:text-indigo-600  my-auto">
              Back

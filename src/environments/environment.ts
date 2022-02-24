@@ -18,6 +18,7 @@ export const environment = {
     retries: 5,
     usersSerice: 'http://localhost:3000',
   },
+  domainAvailabilityApi: 'https://domain-availability.whoisxmlapi.com/api/v1',
   domainAvailabilityApiKeys: ['at_LMFjCSp9va8P0lYNIWeXm72Q4ekcw'],
 };
 

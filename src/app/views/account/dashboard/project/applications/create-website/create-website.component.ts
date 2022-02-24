@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { WebsiteCategories } from 'src/app/constants/website-categories.constant';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
+import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
 import { ApplicationService } from 'src/app/services/application.service';
 
 @Component({
@@ -43,7 +44,8 @@ export class CreateWebsiteComponent implements OnInit {
       },
       {
         step: 3,
-        canContinue: () => this.createWebAppForm.get('domain')?.valid,
+        canContinue: () =>
+          this.createWebAppForm.get('domain')?.valid && this.domainAvailable,
         canSkip: true,
       },
       {
@@ -60,6 +62,7 @@ export class CreateWebsiteComponent implements OnInit {
 
   websiteCategories = WebsiteCategories;
   domainAvailable: boolean = false;
+  domainFailed: boolean = false;
   chekingDomain: boolean = false;
 
   domainValid(): boolean | undefined {
@@ -86,6 +89,24 @@ export class CreateWebsiteComponent implements OnInit {
 
   checkDomain() {
     if (this.domainValid()) {
+      this.chekingDomain = true;
+      this.applicationService
+        .checkDomainNameAvailablity(this.createWebAppForm.get('domain')?.value)
+        .subscribe((resp) => {
+          console.log(resp);
+          this.chekingDomain = false;
+          if (
+            resp.DomainInfo.domainAvailability ==
+            DomainNameAvailability.AVAILABLE
+          ) {
+            this.domainAvailable = true;
+          } else if (
+            resp.DomainInfo.domainAvailability ==
+            DomainNameAvailability.UNAVAILABLE
+          ) {
+            this.domainFailed = true;
+          }
+        });
     }
   }
 
