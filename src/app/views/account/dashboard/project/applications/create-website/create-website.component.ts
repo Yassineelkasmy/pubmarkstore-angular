@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { DomainNameRegex } from 'src/app/constants/validators.regex';
 import { WebsiteCategories } from 'src/app/constants/website-categories.constant';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
 import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
@@ -10,7 +17,10 @@ import { ApplicationService } from 'src/app/services/application.service';
   templateUrl: './create-website.component.html',
 })
 export class CreateWebsiteComponent implements OnInit {
-  constructor(private applicationService: ApplicationService) {
+  constructor(
+    private applicationService: ApplicationService,
+    private formBuilder: FormBuilder
+  ) {
     this.createWebAppForm = new FormGroup({
       name: new FormControl('', [
         Validators.minLength(5),
@@ -23,11 +33,14 @@ export class CreateWebsiteComponent implements OnInit {
         Validators.required,
       ]),
       domain: new FormControl('', [
-        Validators.pattern(
-          '^(?!.* .*)(?:[a-z0-9][a-z0-9-]{0,61}[a-z0-9].)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$'
-        ),
+        Validators.pattern(DomainNameRegex),
         Validators.required,
       ]),
+      imported_domain: new FormControl('', [
+        Validators.pattern(DomainNameRegex),
+        Validators.required,
+      ]),
+      categories: this.formBuilder.array([], []),
     });
 
     this.steps = [
@@ -57,6 +70,7 @@ export class CreateWebsiteComponent implements OnInit {
     this.currentStep = this.steps[2];
   }
   createWebAppForm: FormGroup;
+
   steps: CreateWebAppStep[];
   currentStep: CreateWebAppStep;
 
@@ -64,6 +78,25 @@ export class CreateWebsiteComponent implements OnInit {
   domainAvailable: boolean = false;
   domainFailed: boolean = false;
   chekingDomain: boolean = false;
+
+  onCategoryCheckboxChange(e: any) {
+    const checkArray: FormArray = this.createWebAppForm.get(
+      'categories'
+    ) as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
 
   domainValid(): boolean | undefined {
     return this.createWebAppForm.get('domain')?.valid;

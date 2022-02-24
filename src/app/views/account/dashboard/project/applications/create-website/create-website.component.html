@@ -1,12 +1,13 @@
-<div class="w-full h-screen relative">
-    <div class="flex text-2xl text-gray-600 space-x-10">
-        <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
-        <p class="my-auto">
-            Create a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
-        </p>
-    </div>
+<div class="w-full flex flex-col space-y-20">
+   
 
-    <form [formGroup]="createWebAppForm" class="mt-16 font-semibold">
+    <form [formGroup]="createWebAppForm" class="font-semibold">
+        <div class="flex text-2xl text-gray-600 space-x-10">
+            <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
+            <p class="my-auto font-normal mb-10">
+                Create a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
+            </p>
+        </div>
         <div *ngIf="currentStep.step==1" class="text-center flex flex-col text-2xl">
             <div>
                 <p>
@@ -34,10 +35,10 @@
                     Select one or more categories
                 </p>
                 <div class="mt-10 grid grid-cols-4 gap-y-5">
-                    <div *ngFor="let category of websiteCategories" class="form-control">
+                    <div *ngFor="let category of websiteCategories; let i=index" class="form-control">
                         <label class="cursor-pointer label justify-start space-x-4">
                           <span class="label-text text-lg">{{ category }}</span>
-                          <input type="checkbox"  class="checkbox checkbox-primary">
+                          <input type="checkbox" [value]="category" (change)="onCategoryCheckboxChange($event)" class="checkbox checkbox-primary">
                         </label>
                     </div>
                 </div>
@@ -53,24 +54,32 @@
                 Give us a domain name and we will register it for you
             </p>
             <div class="flex">
-                <input (change)="domainAvailable=false; domainFailed = false" formControlName="domain" type="text" placeholder="Enter a domain name; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
-                <button *ngIf="chekingDomain" class="mt-12 btn loading normal-case">Cheking</button>
-                <button (click)="checkDomain()" [disabled]="!domainValid()" *ngIf="!chekingDomain && !domainAvailable" class="mt-12 btn bg-indigo-600 normal-case">Check</button>
+                <input (change)="domainAvailable=false; domainFailed = false" formControlName="domain" type="text" placeholder="Enter a domain name to check if it is available; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
 
             </div>
-            <p *ngIf="domainFailed" class="mt-5 text-error">
-                Domain Unavailable
+            <div class="mx-auto mt-5 flex space-x-5">
+                <button *ngIf="chekingDomain" class="btn loading normal-case">Cheking</button>
+                <button (click)="checkDomain()" [disabled]="!domainValid()" *ngIf="!chekingDomain && !domainAvailable" class="btn bg-indigo-600 normal-case">Check Availability</button>
+                <p *ngIf="domainFailed" class="my-auto text-lg text-error">
+                    Domain Unavailable
+                </p>
+                <p *ngIf="domainAvailable" class="my-auto text-lg text-info">
+                    Domain Available
+                </p>
+            </div>            
+            <p class="mt-10">
+                Already have a domain name?
             </p>
-            <p *ngIf="domainAvailable" class="mt-5 text-info">
-                Domain Available
+            <p class="text-lg text-gray-600 font-normal">
+                In case you already own a domain name, we can use it for your new website
             </p>
+            <input  formControlName="imported_domain" type="text" placeholder="Enter a domain name you already have; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
+           
         </div>
 
     </form>
-    <p *ngIf="currentStep.canSkip" class="mt-10 text-lg text-center text-gray-600 font-normal">
-        You can skip this step
-    </p>
-    <div class="absolute left-0 right-0 bottom-40 w-full flex justify-around">
+   
+    <div class="w-full flex justify-around">
         <button (click)="goBack()" [disabled]="isFirstStep()" class="cursor-pointer tracking-wider underline underline-offset-8 text-base text-gray-800 btn normal-case bg-transparent hover:bg-transparent border-none hover:text-indigo-600  my-auto">
              Back
         </button>
