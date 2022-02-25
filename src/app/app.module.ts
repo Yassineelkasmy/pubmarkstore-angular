@@ -40,6 +40,10 @@ import { OverviewItemComponent } from './views/account/dashboard/project/overvie
 import { ApplicationsComponent } from './views/account/dashboard/project/applications/applications.component';
 import { CreateAppItemComponent } from './views/account/dashboard/project/applications/create-app-item/create-app-item.component';
 import { CreateWebsiteComponent } from './views/account/dashboard/project/applications/create-website/create-website.component';
+import { AuthService } from './services/auth.service';
+import { ProjectService } from './services/project.service';
+import { ApplicationService } from './services/application.service';
+import { FileUploadService } from './services/file-upload.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +87,10 @@ import { CreateWebsiteComponent } from './views/account/dashboard/project/applic
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     UserTrackingService,
+    AuthService,
+    ProjectService,
+    ApplicationService,
+    FileUploadService,
   ],
   bootstrap: [AppComponent],
 })
