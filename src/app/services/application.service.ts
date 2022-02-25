@@ -1,7 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CheckDomainNameRequest } from '../dto/CheckDomainName.request';
 import { Application } from '../models/application/Application';
 import { DomainNameAvailabilityResponse } from '../models/domain-name/domain-name-availability.response';
 
@@ -26,20 +27,11 @@ export class ApplicationService {
       this.basePath + projectId + '/' + applicationId
     );
   }
-  checkDomainNameAvailablity(domainName: string) {
-    let params = new HttpParams()
-      .set('apiKey', environment.domainAvailabilityApiKeys[0])
-      .set('domainName', domainName);
 
-    return this.httpClient.get<DomainNameAvailabilityResponse>(
-      environment.domainAvailabilityApi,
-      {
-        params: params,
-      }
+  checkDomainNameAvailablity(req: CheckDomainNameRequest) {
+    return this.httpClient.post<DomainNameAvailabilityResponse>(
+      this.basePath + 'checkdomain',
+      req
     );
   }
-
-  //   createProject(request: CreateProjectRequest): Observable<Project> {
-  //     return this.httpClient.post<Project>(this.basePath + '/create', request);
-  //   }
 }

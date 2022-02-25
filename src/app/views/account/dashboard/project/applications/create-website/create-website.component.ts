@@ -6,8 +6,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { CreateWebAppFeatures } from 'src/app/constants/create-webapp-features.constants';
 import { DomainNameRegex } from 'src/app/constants/validators.regex';
 import { WebsiteCategories } from 'src/app/constants/website-categories.constant';
+import { CheckDomainNameRequest } from 'src/app/dto/CheckDomainName.request';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
 import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
 import { ApplicationService } from 'src/app/services/application.service';
@@ -41,6 +43,7 @@ export class CreateWebsiteComponent implements OnInit {
         Validators.required,
       ]),
       categories: this.formBuilder.array([], []),
+      features: this.formBuilder.array([], []),
     });
 
     this.steps = [
@@ -58,7 +61,9 @@ export class CreateWebsiteComponent implements OnInit {
       {
         step: 3,
         canContinue: () =>
-          this.createWebAppForm.get('domain')?.valid && this.domainAvailable,
+          (this.createWebAppForm.get('domain')?.valid &&
+            this.domainAvailable) ||
+          this.createWebAppForm.get('imported_domain')?.valid,
         canSkip: true,
       },
       {
@@ -66,8 +71,13 @@ export class CreateWebsiteComponent implements OnInit {
         canContinue: () => true,
         canSkip: true,
       },
+      {
+        step: 5,
+        canContinue: () => true,
+        canSkip: true,
+      },
     ];
-    this.currentStep = this.steps[2];
+    this.currentStep = this.steps[4];
   }
   createWebAppForm: FormGroup;
 
@@ -75,11 +85,30 @@ export class CreateWebsiteComponent implements OnInit {
   currentStep: CreateWebAppStep;
 
   websiteCategories = WebsiteCategories;
+  createWebAppFetures = CreateWebAppFeatures;
   domainAvailable: boolean = false;
   domainFailed: boolean = false;
   chekingDomain: boolean = false;
 
   onCategoryCheckboxChange(e: any) {
+    const checkArray: FormArray = this.createWebAppForm.get(
+      'categories'
+    ) as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
+  onFeatureCheckboxChange(e: any) {
     const checkArray: FormArray = this.createWebAppForm.get(
       'categories'
     ) as FormArray;
@@ -123,8 +152,11 @@ export class CreateWebsiteComponent implements OnInit {
   checkDomain() {
     if (this.domainValid()) {
       this.chekingDomain = true;
+      let checkDomainRequest: CheckDomainNameRequest = {
+        domainName: this.createWebAppForm.get('domain')?.value,
+      };
       this.applicationService
-        .checkDomainNameAvailablity(this.createWebAppForm.get('domain')?.value)
+        .checkDomainNameAvailablity(checkDomainRequest)
         .subscribe((resp) => {
           console.log(resp);
           this.chekingDomain = false;

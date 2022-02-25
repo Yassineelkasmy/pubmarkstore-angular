@@ -18,6 +18,10 @@ import { FooterComponent } from './views/landing/components/footer/footer.compon
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import {
+  AngularFireAnalyticsModule,
+  UserTrackingService,
+} from '@angular/fire/compat/analytics';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './shared/login/login.component';
 import { AccountComponent } from './views/account/account.component';
@@ -72,11 +76,13 @@ import { CreateWebsiteComponent } from './views/account/dashboard/project/applic
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireAnalyticsModule,
     ReactiveFormsModule,
     FormsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    UserTrackingService,
   ],
   bootstrap: [AppComponent],
 })

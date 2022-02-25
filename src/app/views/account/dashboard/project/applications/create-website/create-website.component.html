@@ -45,7 +45,7 @@
                 
            
         </div>
-        <div *ngIf="currentStep.step==3" class="text-center flex flex-col  text-2xl">
+        <div *ngIf="currentStep.step==3" class="text-center flex flex-col text-2xl">
             
             <p>
                 Connect to a domain name
@@ -76,6 +76,32 @@
             <input  formControlName="imported_domain" type="text" placeholder="Enter a domain name you already have; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
            
         </div>
+        <div *ngIf="currentStep.step==4" class="text-lg grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+         
+                <label *ngFor="let feature of createWebAppFetures" class="cursor-pointer border text-base text-center bg-white rounded-md shadow-md px-5 py-5 relative transition-all hover:-translate-y-2 hover:shadow-xl">
+                    <p class="font-semibold">
+                        {{ feature.name }}
+                    </p>
+                    <p class="text-gray-600 mt-2 font-normal">
+                        {{ feature.description }}
+                    </p>
+                    <input type="checkbox" [value]="feature.name" (change)="onFeatureCheckboxChange($event)" class="absolute top-2 left-2 checkbox checkbox-primary">
+
+                </label>
+            
+
+        </div>
+         <div *ngIf="currentStep.step==5" class="flex flex-col text-2xl text-center">
+         
+            <p>
+                Help us design and shape your website
+            </p>
+            <p class="text-lg text-gray-600 font-normal">
+                Upload anything that describe your business, images, videos and design files, we will use these files
+                to ship prototypes for you 
+            </p>
+        </div>
+
 
     </form>
    
