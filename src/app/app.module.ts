@@ -44,6 +44,10 @@ import { AuthService } from './services/auth.service';
 import { ProjectService } from './services/project.service';
 import { ApplicationService } from './services/application.service';
 import { FileUploadService } from './services/file-upload.service';
+import { UploadFieldComponent } from './shared/upload-field/upload-field.component';
+import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
+import { UploaderComponent } from './shared/uploader/uploader.component';
+import { DropzoneDirective } from './directives/dropzone.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +76,10 @@ import { FileUploadService } from './services/file-upload.service';
     ApplicationsComponent,
     CreateAppItemComponent,
     CreateWebsiteComponent,
+    UploadFieldComponent,
+    UploadTaskComponent,
+    UploaderComponent,
+    DropzoneDirective,
   ],
   imports: [
     BrowserModule,

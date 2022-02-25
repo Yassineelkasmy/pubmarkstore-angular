@@ -1,0 +1,28 @@
+<div>
+    <label class="label">
+     <span class="label-text">{{ label }}</span>
+    </label>
+    <div class="flex space-x-1">
+        <input #fileInput (change)='selectFile($event)' type="file" class="form-control
+    px-3
+    py-1.5
+    text-base
+    font-normal
+    text-gray-700
+    bg-white bg-clip-padding
+    border border-solid border-gray-300
+    rounded
+    transition
+    ease-in-out
+    m-0
+    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" required>
+        <button *ngIf="!uploaded" class="btn" [disabled]="!selectedFiles" (click)="uploadFile()">Upload</button>
+        <button *ngIf="uploaded" class="btn btn-error" (click)="deleteFileUpload()">Cancel</button>
+
+    </div>
+    <div *ngIf="currentFileUpload">
+        <progress class="progress progress-primary" value="{{ percentage }}" max="100"></progress>
+    </div>
+
+
+</div>

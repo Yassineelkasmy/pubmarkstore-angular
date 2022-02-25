@@ -1,0 +1,13 @@
+<div *ngIf="!cancelled">
+   <p class="text-left">
+       {{ file?.name }}
+   </p>
+    <div class="flex space-x-10">
+
+        <progress class="my-auto progress progress-primary" value="{{ percentage }}" max="100"></progress>
+        <button  class="my-auto btn btn-error"  (click)="deleteFileUpload()">Cancel</button>
+
+    </div>
+    
+
+</div>

@@ -65,4 +65,13 @@ export class FileUploadService {
 
     return userFilesData.set(dataObj, { merge: true });
   }
+
+  deleteFile(fileUpload: FileUpload): void {
+    this.deleteFileStorage(fileUpload.name!);
+  }
+
+  private deleteFileStorage(name: string): void {
+    const storageRef = this.storage.ref(this.basePath + '/' + this.folder);
+    storageRef.child(name).delete();
+  }
 }

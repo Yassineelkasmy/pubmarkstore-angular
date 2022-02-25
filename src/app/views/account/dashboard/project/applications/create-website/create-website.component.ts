@@ -86,6 +86,8 @@ export class CreateWebsiteComponent implements OnInit {
 
   websiteCategories = WebsiteCategories;
   createWebAppFetures = CreateWebAppFeatures;
+
+  //Domain name business logic booleans
   domainAvailable: boolean = false;
   domainFailed: boolean = false;
   chekingDomain: boolean = false;

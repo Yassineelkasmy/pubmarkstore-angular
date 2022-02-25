@@ -1,0 +1,17 @@
+<div class="mt-10">
+  <div class="text-base flex flex-col space-y-4" 
+     dropzone
+     (hovered)="toggleHover($event)"
+     (dropped)="onDrop($event)"
+     [class.hovering]="isHovering">
+
+    <p class="text-lg">Drag and Drop a File</p>
+    <img class="w-40 h-40 mx-auto" src="../../../assets/icons/upload.png" alt="">
+    <input class="mx-auto" type="file" (change)="onDrop($any($event).target.files)">
+
+<div *ngFor="let file of files">
+  <app-upload-task [file]="file"></app-upload-task> 
+  
+</div>
+
+</div>
