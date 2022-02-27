@@ -5,7 +5,7 @@
         <div class="flex text-2xl text-gray-600 space-x-10">
             <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
             <p class="my-auto font-normal mb-10">
-                Create a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
+               Order a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
             </p>
         </div>
         <div *ngIf="currentStep.step==1" class="text-center flex flex-col text-2xl">
@@ -22,7 +22,7 @@
             <p>
                 What is it about?
             </p>
-            <input formControlName="description" type="text" placeholder="Enter a small description" class="my-5 text-xl large-input w-10/12 mx-auto">
+            <textarea formControlName="description" type="text" placeholder="Enter a user story" class="my-5 text-xl large-input w-10/12 textarea textarea-bordered h-52 pt-5 mx-auto"></textarea>
            </div>
         </div>
 
@@ -91,7 +91,7 @@
             
 
         </div>
-         <div *ngIf="currentStep.step==5" class="flex flex-col text-2xl text-center">
+        <div *ngIf="currentStep.step==5" class="flex flex-col text-2xl text-center">
          
             <p>
                 Help us design and shape your website
@@ -101,6 +101,26 @@
                 to ship prototypes for you 
             </p>    
             <app-uploader></app-uploader> 
+            
+        </div>
+        <div *ngIf="currentStep.step==6" class="flex flex-col text-2xl text-center">
+         
+            <p>
+                Schedule an online meeting and specify a deadline
+            </p>
+            <div class="mt-10 flex flex-col mx-auto text-lg text-left">
+                <div class="flex flex-col space-y-2">
+                    <p>
+                        Do you have a deadline?
+                    </p>
+                    <select formControlName="deadline" class="select w-full max-w-xs">
+                        <option disabled>Specify</option>
+                        <option *ngFor="let deadline of deadlines" [ngValue]="deadline">{{ deadline }}</option>
+                    </select>
+                    
+
+                </div>
+            </div>
             
         </div>
 
@@ -117,7 +137,7 @@
         </button>
 
         <button *ngIf="isLastStep()" [disabled]="!currentStep.canContinue()" class="btn border-none rounded-full btn-wide tracking-wider text-base btn-primary normal-case bg-indigo-600">
-            Create
+            Order
         </button>
 
         <button [disabled]="!currentStep.canSkip" (click)="nextStep()" class="cursor-pointer tracking-wider underline underline-offset-8 text-base text-gray-800 btn normal-case bg-transparent hover:bg-transparent border-none hover:text-indigo-600  my-auto">

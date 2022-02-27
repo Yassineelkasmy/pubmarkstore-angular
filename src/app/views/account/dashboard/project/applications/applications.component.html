@@ -4,7 +4,7 @@
 
 <div *ngIf="applications?.length==0">
     <p class="text-2xl mb-10">
-        Seems that you don`t have any applications yet, create one
+        You don`t have any applications yet, create one
     </p>
     <div class="flex space-y-5 md:justify-around flex-col md:flex-row">
         <app-create-app-item [routerLink]="'../createwebapp'"  [title]="'Website'" [icon]="'web'" route='createwebapp'></app-create-app-item>

@@ -12,6 +12,6 @@
 
 @layer components {
   .large-input {
-    @apply text-indigo-600 text-2xl font-semibold tracking-wide bg-gray-50 input input-bordered input-lg;
+    @apply text-2xl font-semibold tracking-wide text-gray-600 bg-gray-50 input input-bordered input-lg;
   }
 }

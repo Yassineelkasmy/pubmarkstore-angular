@@ -44,6 +44,7 @@ export class CreateWebsiteComponent implements OnInit {
       ]),
       categories: this.formBuilder.array([], []),
       features: this.formBuilder.array([], []),
+      deadline: new FormControl('', [Validators.required]),
     });
 
     this.steps = [
@@ -76,10 +77,24 @@ export class CreateWebsiteComponent implements OnInit {
         canContinue: () => true,
         canSkip: true,
       },
+      {
+        step: 6,
+        canContinue: () => this.createWebAppForm.get('deadline')?.valid,
+        canSkip: true,
+      },
     ];
-    this.currentStep = this.steps[4];
+    this.currentStep = this.steps[5];
   }
   createWebAppForm: FormGroup;
+
+  deadlines: string[] = [
+    'Less than a month',
+    '2 Month',
+    '3 Months',
+    '4 Months',
+    '6 Months',
+    'Not sure',
+  ];
 
   steps: CreateWebAppStep[];
   currentStep: CreateWebAppStep;
