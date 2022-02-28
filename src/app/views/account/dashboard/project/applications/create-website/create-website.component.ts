@@ -10,9 +10,12 @@ import { CreateWebAppFeatures } from 'src/app/constants/create-webapp-features.c
 import { DomainNameRegex } from 'src/app/constants/validators.regex';
 import { WebsiteCategories } from 'src/app/constants/website-categories.constant';
 import { CheckDomainNameRequest } from 'src/app/dto/CheckDomainName.request';
+import { OrderWebsiteRequest } from 'src/app/dto/order-website.request';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
 import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
 import { ApplicationService } from 'src/app/services/application.service';
+import { ProjectService } from 'src/app/services/project.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-website',
@@ -21,6 +24,7 @@ import { ApplicationService } from 'src/app/services/application.service';
 export class CreateWebsiteComponent implements OnInit {
   constructor(
     private applicationService: ApplicationService,
+    private projectServcie: ProjectService,
     private formBuilder: FormBuilder
   ) {
     this.createWebAppForm = new FormGroup({
@@ -31,7 +35,7 @@ export class CreateWebsiteComponent implements OnInit {
       ]),
       description: new FormControl('', [
         Validators.minLength(10),
-        Validators.maxLength(100),
+        Validators.maxLength(1000),
         Validators.required,
       ]),
       domain: new FormControl('', [
@@ -83,7 +87,7 @@ export class CreateWebsiteComponent implements OnInit {
         canSkip: true,
       },
     ];
-    this.currentStep = this.steps[5];
+    this.currentStep = this.steps[0];
   }
   createWebAppForm: FormGroup;
 
@@ -96,6 +100,7 @@ export class CreateWebsiteComponent implements OnInit {
     'Not sure',
   ];
 
+  projectId?: string;
   steps: CreateWebAppStep[];
   currentStep: CreateWebAppStep;
 
@@ -127,7 +132,7 @@ export class CreateWebsiteComponent implements OnInit {
   }
   onFeatureCheckboxChange(e: any) {
     const checkArray: FormArray = this.createWebAppForm.get(
-      'categories'
+      'features'
     ) as FormArray;
 
     if (e.target.checked) {
@@ -191,6 +196,38 @@ export class CreateWebsiteComponent implements OnInit {
         });
     }
   }
+  orderWebsite() {
+    let req: OrderWebsiteRequest = {
+      name: this.createWebAppForm.get('name')?.value,
+      description: this.createWebAppForm.get('description')?.value,
+      domain: this.createWebAppForm.get('domain')?.value,
+      imported_domain: this.createWebAppForm.get('imported_domain')?.value,
+      categories: this.createWebAppForm.get('categories')?.value,
+      features: this.createWebAppForm.get('features')?.value,
+      deadline: this.createWebAppForm.get('deadline')?.value,
+      projectId: this.projectId!,
+    };
 
-  ngOnInit(): void {}
+    const submitMsg =
+      'This was just an intro for your website request, you will get a notification after validating your order soon, we will contact you and have further disscussions or an online meeting to know your user story clear enough.';
+
+    Swal.fire({
+      text: submitMsg,
+      titleText: 'Notice',
+      confirmButtonText: 'Order now',
+    }).then((swal) => {
+      if (swal.isConfirmed) {
+        Swal.showLoading();
+        this.applicationService.orderWebsite(req).subscribe((v) => {
+          Swal.close();
+        });
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.projectServcie.currentProject?.subscribe(
+      (project) => (this.projectId = project._id)
+    );
+  }
 }

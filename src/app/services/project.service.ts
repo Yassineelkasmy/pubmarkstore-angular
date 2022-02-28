@@ -10,7 +10,7 @@ import { Project } from '../models/Project';
 })
 export class ProjectService {
   constructor(private httpClient: HttpClient) {}
-  currentProject?: Project;
+  currentProject?: Observable<Project>;
 
   basePath = environment.apis.usersSerice + '/projects';
 
@@ -18,10 +18,8 @@ export class ProjectService {
     return this.httpClient.get<Project[]>(this.basePath);
   }
 
-  setCurrentUserProject(name: string): void {
-    this.httpClient
-      .get<Project>(`${this.basePath}/${name}`)
-      .subscribe((project) => (this.currentProject = project));
+  getCurrentUserProject(name: string): Observable<Project> {
+    return this.httpClient.get<Project>(`${this.basePath}/${name}`);
   }
 
   createProject(request: CreateProjectRequest): Observable<Project> {

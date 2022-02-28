@@ -28,8 +28,6 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(this.accessToken);
-
     if (this.accessToken) {
       const cloned = req.clone({
         headers: req.headers.set('Authorization', 'Bearer ' + this.accessToken),

@@ -11,13 +11,17 @@ export class ApplicationsComponent implements OnInit {
   constructor(
     public prjectServcie: ProjectService,
     public applicationService: ApplicationService
-  ) {
-    this.applicationService
-      .userProjectApplications(this.prjectServcie.currentProject?._id!)
-      .subscribe((apps) => (this.applications = apps));
-  }
+  ) {}
 
   applications?: Application[];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.prjectServcie.currentProject?.subscribe((project) => {
+      this.applicationService
+        .userProjectApplications(project._id)
+        .subscribe((apps) => {
+          this.applications = apps;
+        });
+    });
+  }
 }

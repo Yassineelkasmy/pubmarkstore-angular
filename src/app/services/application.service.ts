@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CheckDomainNameRequest } from '../dto/CheckDomainName.request';
+import { OrderWebsiteRequest } from '../dto/order-website.request';
 import { Application } from '../models/application/Application';
 import { DomainNameAvailabilityResponse } from '../models/domain-name/domain-name-availability.response';
 
@@ -33,5 +34,9 @@ export class ApplicationService {
       this.basePath + 'checkdomain',
       req
     );
+  }
+
+  orderWebsite(req: OrderWebsiteRequest) {
+    return this.httpClient.post(this.basePath + 'orderwebsite', req);
   }
 }
