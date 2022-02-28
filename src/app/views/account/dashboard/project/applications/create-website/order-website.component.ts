@@ -6,9 +6,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { CreateWebAppFeatures } from 'src/app/constants/create-webapp-features.constants';
+import { OrderWebAppFeatures } from 'src/app/content/order-webapp-features.content';
 import { DomainNameRegex } from 'src/app/constants/validators.regex';
-import { WebsiteCategories } from 'src/app/constants/website-categories.constant';
+import { WebsiteCategories } from 'src/app/content/website-categories.content';
 import { CheckDomainNameRequest } from 'src/app/dto/CheckDomainName.request';
 import { OrderWebsiteRequest } from 'src/app/dto/order-website.request';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
@@ -18,10 +18,10 @@ import { ProjectService } from 'src/app/services/project.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-create-website',
-  templateUrl: './create-website.component.html',
+  selector: 'app-order-website',
+  templateUrl: './order-website.component.html',
 })
-export class CreateWebsiteComponent implements OnInit {
+export class OrderWebsiteComponent implements OnInit {
   constructor(
     private applicationService: ApplicationService,
     private projectServcie: ProjectService,
@@ -105,7 +105,7 @@ export class CreateWebsiteComponent implements OnInit {
   currentStep: CreateWebAppStep;
 
   websiteCategories = WebsiteCategories;
-  createWebAppFetures = CreateWebAppFeatures;
+  createWebAppFetures = OrderWebAppFeatures;
 
   //Domain name business logic booleans
   domainAvailable: boolean = false;

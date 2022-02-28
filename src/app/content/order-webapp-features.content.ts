@@ -1,6 +1,6 @@
-import { CreateWebAppFeature } from '../models/CreateWebAppFeature';
+import { OrderWebAppFeature } from '../models/OrderWebAppFeature';
 
-export const CreateWebAppFeatures: CreateWebAppFeature[] = [
+export const OrderWebAppFeatures: OrderWebAppFeature[] = [
   {
     name: 'Chat',
     description: 'Chat with web visitors.',

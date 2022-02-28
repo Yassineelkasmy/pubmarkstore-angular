@@ -9,8 +9,6 @@ export class ProjectMenuItemComponent implements OnInit {
 
   @Input() title?: string;
   @Input() route?: string;
-  @Input() icon?: string;
-  @Input() activeIcon?: string;
 
   ngOnInit(): void {}
 }

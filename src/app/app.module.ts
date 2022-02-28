@@ -39,7 +39,7 @@ import { OverviewComponent } from './views/account/dashboard/project/overview/ov
 import { OverviewItemComponent } from './views/account/dashboard/project/overview/overview-item/overview-item.component';
 import { ApplicationsComponent } from './views/account/dashboard/project/applications/applications.component';
 import { CreateAppItemComponent } from './views/account/dashboard/project/applications/create-app-item/create-app-item.component';
-import { CreateWebsiteComponent } from './views/account/dashboard/project/applications/create-website/create-website.component';
+import { OrderWebsiteComponent } from './views/account/dashboard/project/applications/create-website/order-website.component';
 import { AuthService } from './services/auth.service';
 import { ProjectService } from './services/project.service';
 import { ApplicationService } from './services/application.service';
@@ -75,7 +75,7 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     OverviewItemComponent,
     ApplicationsComponent,
     CreateAppItemComponent,
-    CreateWebsiteComponent,
+    OrderWebsiteComponent,
     UploadFieldComponent,
     UploadTaskComponent,
     UploaderComponent,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/Project';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -8,5 +9,10 @@ import { ProjectService } from 'src/app/services/project.service';
 export class OverviewComponent implements OnInit {
   constructor(public projectService: ProjectService) {}
 
-  ngOnInit(): void {}
+  project?: Project;
+  ngOnInit(): void {
+    this.projectService.currentProject?.subscribe(
+      (project) => (this.project = project)
+    );
+  }
 }

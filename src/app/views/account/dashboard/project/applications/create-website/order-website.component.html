@@ -2,7 +2,7 @@
    
 
     <form [formGroup]="createWebAppForm" class="font-semibold">
-        <div class="flex text-2xl text-gray-600 space-x-10">
+        <div class="flex stepper-name space-x-10">
             <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
             <p class="my-auto font-normal mb-10">
                Order a Website (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})
@@ -13,7 +13,7 @@
                 <p>
                     Give it a name
                 </p>
-                <p class="text-lg text-gray-600 font-normal">
+                <p class="stepper-subtitle">
                     You can change it anytime
                 </p>
                 <input formControlName="name" type="text" placeholder="Enter a name for your website" class="my-5 text-xl large-input  w-10/12 mx-auto">
@@ -31,7 +31,7 @@
                 <p>
                     What kind of website are you creating?
                 </p>
-                <p class="text-lg text-gray-600 font-normal">
+                <p class="stepper-subtitle">
                     Select one or more categories
                 </p>
                 <div class="mt-10 grid grid-cols-4 gap-y-5">
@@ -50,7 +50,7 @@
             <p>
                 Connect to a domain name
             </p>
-            <p class="text-lg text-gray-600 font-normal">
+            <p class="stepper-subtitle">
                 Give us a domain name and we will register it for you
             </p>
             <div class="flex">
@@ -70,7 +70,7 @@
             <p class="mt-10">
                 Already have a domain name?
             </p>
-            <p class="text-lg text-gray-600 font-normal">
+            <p class="stepper-subtitle">
                 In case you already own a domain name, we can use it for your new website
             </p>
             <input  formControlName="imported_domain" type="text" placeholder="Enter a domain name you already have; example.com" class="mt-10 text-xl large-input w-10/12 mx-auto">
@@ -96,7 +96,7 @@
             <p>
                 Help us design and shape your website
             </p>
-            <p class="text-lg text-gray-600 font-normal">
+            <p class="stepper-subtitle">
                 Upload anything that describe your business, images, videos and design files, we will use these files
                 to ship prototypes for you 
             </p>    

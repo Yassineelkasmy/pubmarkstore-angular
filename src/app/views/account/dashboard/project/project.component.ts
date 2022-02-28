@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -9,7 +9,8 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ProjectComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
+    public router: Router,
     public projectService: ProjectService
   ) {}
 
@@ -23,5 +24,8 @@ export class ProjectComponent implements OnInit {
           });
       });
     });
+  }
+  currentPage(page: string): boolean {
+    return this.router.url.split('/').reverse()[0] == page;
   }
 }

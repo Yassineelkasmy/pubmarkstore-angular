@@ -2,7 +2,7 @@
    <div class="sm:col-span-5 md:col-span-3">
 
     <form [formGroup]="createProjectForm" class="form-control ml-20 mt-16 mr-20 text-4xl leading-relaxed tracking-wide">
-        <div class="flex text-2xl text-gray-600 space-x-10">
+        <div class="flex stepper-name space-x-10">
             <img routerLink="/account/dashboard/projects" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
             <p class="my-auto">
                 Create a project (Step {{steps.indexOf(currentStep) + 1}} of {{steps.length}})

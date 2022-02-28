@@ -1,4 +1,4 @@
-export interface CreateWebAppFeature {
+export interface OrderWebAppFeature {
   name: string;
   description: string;
 }

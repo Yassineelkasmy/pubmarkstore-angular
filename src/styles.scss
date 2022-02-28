@@ -14,4 +14,16 @@
   .large-input {
     @apply text-2xl font-semibold tracking-wide text-gray-600 bg-gray-50 input input-bordered input-lg;
   }
+  .dashboard-title {
+    @apply text-3xl;
+  }
+  .stepper-name {
+    @apply text-2xl text-gray-600 font-normal;
+  }
+  .stepper-subtitle {
+    @apply text-lg text-gray-600 font-normal;
+  }
+  .project-menu-button {
+    @apply btn justify-start capitalize hover:bg-slate-700 bg-transparent border-t-0 border-r-0 border-l-0 h-16 btn-wide gap-4 rounded-none;
+  }
 }
