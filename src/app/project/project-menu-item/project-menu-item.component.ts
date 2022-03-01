@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-project-menu-item',
+  selector: 'project-menu-item',
   templateUrl: './project-menu-item.component.html',
 })
 export class ProjectMenuItemComponent implements OnInit {

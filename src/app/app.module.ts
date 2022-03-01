@@ -24,30 +24,11 @@ import {
 } from '@angular/fire/compat/analytics';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './shared/login/login.component';
-import { AccountComponent } from './views/account/account.component';
-import { DashboardComponent } from './views/account/dashboard/dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ProjectsComponent } from './views/account/dashboard/projects/projects.component';
-import { CreateprojectComponent } from './views/account/dashboard/projects/createproject/createproject.component';
-import { ProjectItemComponent } from './views/account/dashboard/projects/createproject/project-item/project-item.component';
-import { CreateProjectItemComponent } from './views/account/dashboard/projects/createproject/create-project-item/create-project-item.component';
-import { ProjectComponent } from './views/account/dashboard/project/project.component';
-import { ProjectMenuItemComponent } from './views/account/dashboard/project/project-menu-item/project-menu-item.component';
 
-import { OverviewComponent } from './views/account/dashboard/project/overview/overview.component';
-import { OverviewItemComponent } from './views/account/dashboard/project/overview/overview-item/overview-item.component';
-import { ApplicationsComponent } from './views/account/dashboard/project/applications/applications.component';
-import { CreateAppItemComponent } from './views/account/dashboard/project/applications/create-app-item/create-app-item.component';
-import { OrderWebsiteComponent } from './views/account/dashboard/project/applications/create-website/order-website.component';
-import { AuthService } from './services/auth.service';
-import { ProjectService } from './services/project.service';
 import { ApplicationService } from './services/application.service';
 import { FileUploadService } from './services/file-upload.service';
-import { UploadFieldComponent } from './shared/upload-field/upload-field.component';
-import { UploadTaskComponent } from './shared/upload-task/upload-task.component';
-import { UploaderComponent } from './shared/uploader/uploader.component';
-import { DropzoneDirective } from './directives/dropzone.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,23 +44,6 @@ import { DropzoneDirective } from './directives/dropzone.directive';
     ContactComponent,
     FooterComponent,
     LoginComponent,
-    AccountComponent,
-    DashboardComponent,
-    ProjectsComponent,
-    CreateprojectComponent,
-    ProjectItemComponent,
-    CreateProjectItemComponent,
-    ProjectComponent,
-    ProjectMenuItemComponent,
-    OverviewComponent,
-    OverviewItemComponent,
-    ApplicationsComponent,
-    CreateAppItemComponent,
-    OrderWebsiteComponent,
-    UploadFieldComponent,
-    UploadTaskComponent,
-    UploaderComponent,
-    DropzoneDirective,
   ],
   imports: [
     BrowserModule,
@@ -95,11 +59,10 @@ import { DropzoneDirective } from './directives/dropzone.directive';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     UserTrackingService,
-    AuthService,
-    ProjectService,
     ApplicationService,
     FileUploadService,
   ],
+  exports: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

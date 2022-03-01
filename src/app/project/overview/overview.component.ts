@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/Project';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'app-overview',
+  selector: 'overview',
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent implements OnInit {

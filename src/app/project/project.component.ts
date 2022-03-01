@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ProjectService } from 'src/app/services/project.service';
+import { AuthService } from '../auth/auth.service';
+import { ProjectService } from './project.service';
 
 @Component({
   selector: 'app-project',
@@ -10,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
+    public authService: AuthService,
     public router: Router,
     public projectService: ProjectService
   ) {}

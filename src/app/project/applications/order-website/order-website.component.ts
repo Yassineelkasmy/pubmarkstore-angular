@@ -14,11 +14,11 @@ import { OrderWebsiteRequest } from 'src/app/dto/order-website.request';
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
 import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
 import { ApplicationService } from 'src/app/services/application.service';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../../project.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-order-website',
+  selector: 'order-website',
   templateUrl: './order-website.component.html',
 })
 export class OrderWebsiteComponent implements OnInit {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateProjectStep } from 'src/app/models/CreateProjectStep';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../../project.service';
 import { CreateProjectRequest } from 'src/app/dto/CreateProject.request';
 import { Project } from 'src/app/models/Project';
 

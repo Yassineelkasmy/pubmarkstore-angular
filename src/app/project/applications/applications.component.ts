@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Application } from 'src/app/models/application/Application';
 import { ApplicationService } from 'src/app/services/application.service';
-import { ProjectService } from 'src/app/services/project.service';
+import { ProjectService } from '../project.service';
 
 @Component({
-  selector: 'app-applications',
+  selector: 'applications',
   templateUrl: './applications.component.html',
 })
 export class ApplicationsComponent implements OnInit {
