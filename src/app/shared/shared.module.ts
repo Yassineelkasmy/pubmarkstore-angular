@@ -7,7 +7,6 @@ import { UploadFieldComponent } from './upload-field/upload-field.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { AuthModule } from '@angular/fire/auth';
-import { GraphQLModule } from '../graph-ql/graph-ql.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,7 @@ import { GraphQLModule } from '../graph-ql/graph-ql.module';
     UploadTaskComponent,
     UploaderComponent,
   ],
-  imports: [CommonModule, GraphQLModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   exports: [
     CommonModule,
     AuthModule,
@@ -26,7 +25,6 @@ import { GraphQLModule } from '../graph-ql/graph-ql.module';
     UploadFieldComponent,
     UploadTaskComponent,
     UploaderComponent,
-    GraphQLModule,
   ],
   providers: [AuthService],
 })

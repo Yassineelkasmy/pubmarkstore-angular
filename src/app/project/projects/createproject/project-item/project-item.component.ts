@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Project } from 'src/app/models/Project';
+import { ProjectsQuery } from 'src/generated/graphql';
 
 @Component({
   selector: 'app-project-item',
@@ -8,7 +8,7 @@ import { Project } from 'src/app/models/Project';
 export class ProjectItemComponent implements OnInit {
   constructor() {}
 
-  @Input() project?: Project;
+  @Input() project?: ProjectsQuery['projects'][number];
 
   ngOnInit(): void {}
 }

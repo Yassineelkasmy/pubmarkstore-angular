@@ -28,6 +28,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { ApplicationService } from './services/application.service';
 import { FileUploadService } from './services/file-upload.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GraphQLModule } from './graph-ql/graph-ql.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAnalyticsModule,
     ReactiveFormsModule,
     FormsModule,
+    GraphQLModule,
   ],
   providers: [UserTrackingService, ApplicationService, FileUploadService],
   exports: [],

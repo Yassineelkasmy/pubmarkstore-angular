@@ -1,39 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/models/Project';
-import { ProjectService } from '../project.service';
-import { Apollo, gql } from 'apollo-angular';
-import { Subscription } from 'rxjs';
-
-const GET_PROJECTS = gql`
-  query Projects {
-    projects {
-      name
-      description
-    }
-  }
-`;
+import { Apollo, gql, QueryRef } from 'apollo-angular';
+import { ProjectsGQL, ProjectsQuery } from 'src/generated/graphql';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent implements OnInit {
-  constructor(private prjectService: ProjectService, private apollo: Apollo) {}
-  querySubscription?: Subscription;
-  projects: Project[] = [];
+  projects?: ProjectsQuery['projects'];
+  constructor(private projectsGql: ProjectsGQL) {}
 
   get userHasProjects(): boolean {
-    return this.projects.length >= 1;
+    if (this.projects) return this.projects.length >= 1;
+    return false;
   }
 
   ngOnInit(): void {
-    this.querySubscription = this.apollo
-      .watchQuery<any>({
-        query: GET_PROJECTS,
-      })
-      .valueChanges.subscribe(({ data, loading }) => {
-        this.projects = data.projects;
-        console.log(data, loading);
-      });
+    this.projectsGql.watch().valueChanges.subscribe((result) => {
+      this.projects = result.data.projects;
+    });
   }
 }
