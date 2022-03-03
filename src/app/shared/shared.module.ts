@@ -7,6 +7,7 @@ import { UploadFieldComponent } from './upload-field/upload-field.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { AuthModule } from '@angular/fire/auth';
+import { GraphQLModule } from '../graph-ql/graph-ql.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { AuthModule } from '@angular/fire/auth';
     UploadTaskComponent,
     UploaderComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, GraphQLModule, ReactiveFormsModule, FormsModule],
   exports: [
     CommonModule,
     AuthModule,
@@ -25,7 +26,8 @@ import { AuthModule } from '@angular/fire/auth';
     UploadFieldComponent,
     UploadTaskComponent,
     UploaderComponent,
+    GraphQLModule,
   ],
-  providers: [],
+  providers: [AuthService],
 })
 export class SharedModule {}

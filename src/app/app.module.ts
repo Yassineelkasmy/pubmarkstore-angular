@@ -24,11 +24,10 @@ import {
 } from '@angular/fire/compat/analytics';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './shared/login/login.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 import { ApplicationService } from './services/application.service';
 import { FileUploadService } from './services/file-upload.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,12 +55,7 @@ import { FileUploadService } from './services/file-upload.service';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    UserTrackingService,
-    ApplicationService,
-    FileUploadService,
-  ],
+  providers: [UserTrackingService, ApplicationService, FileUploadService],
   exports: [],
   bootstrap: [AppComponent],
 })

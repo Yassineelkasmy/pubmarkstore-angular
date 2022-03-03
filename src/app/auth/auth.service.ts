@@ -24,6 +24,7 @@ export class AuthService {
     private router: Router,
     private ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
+    console.log('heeeeeer');
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
