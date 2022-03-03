@@ -1,25 +1,4 @@
-<div class="navbar shadow-lg bg-indigo-600 text-neutral-content">
-    <div class="flex-1 hidden px-2 mx-2 lg:flex">
-      <span class="text-lg font-bold">
-              Pubmarkstore
-      </span>
-    </div> 
-  
-    <div class="flex-none">
-      <button class="btn btn-square btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">     
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>                     
-        </svg>
-      </button>
-    </div> 
-    <div class="flex-none">
-      <div class="avatar">
-        <div class="rounded-full w-10 h-10 m-1">
-          <img src="{{authService.currentUser?.photoURL}}">
-        </div>
-      </div>
-    </div>
-</div>
+<app-dashboard-navbar></app-dashboard-navbar>
 <div class="flex min-h-screen">
     <div class="flex w-min bg-slate-800 text-white bg-repeat-y" style="background-image: url('../../../../../assets/images/navbar.png')">
         <ul>
@@ -31,14 +10,21 @@
             </div>
             <div class="flex divide-y-2">
                 <div class="project-menu-button" routerLink="./applications" [ngClass]="{'text-indigo-300':currentPage('applications')}">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <rect x="4" y="4" width="6" height="6" rx="1"></rect>
-                        <rect x="4" y="14" width="6" height="6" rx="1"></rect>
-                        <rect x="14" y="14" width="6" height="6" rx="1"></rect>
-                        <line x1="14" y1="7" x2="20" y2="7"></line>
-                        <line x1="17" y1="4" x2="17" y2="10"></line>
-                     </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-3d-cube-sphere" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 17.6l-2 -1.1v-2.5" />
+                        <path d="M4 10v-2.5l2 -1.1" />
+                        <path d="M10 4.1l2 -1.1l2 1.1" />
+                        <path d="M18 6.4l2 1.1v2.5" />
+                        <path d="M20 14v2.5l-2 1.12" />
+                        <path d="M14 19.9l-2 1.1l-2 -1.1" />
+                        <line x1="12" y1="12" x2="14" y2="10.9" />
+                        <line x1="18" y1="8.6" x2="20" y2="7.5" />
+                        <line x1="12" y1="12" x2="12" y2="14.5" />
+                        <line x1="12" y1="18.5" x2="12" y2="21" />
+                        <path d="M12 12l-2 -1.12" />
+                        <line x1="6" y1="8.6" x2="4" y2="7.5" />
+                      </svg>
                     my applications
                 </div>    
             </div>

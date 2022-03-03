@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, gql, QueryRef } from 'apollo-angular';
 import { ProjectsGQL, ProjectsQuery } from 'src/generated/graphql';
 
 @Component({
@@ -16,8 +15,16 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectsGql.watch().valueChanges.subscribe((result) => {
-      this.projects = result.data.projects;
-    });
+    this.projectsGql
+      .watch(
+        {},
+        {
+          pollInterval: 5000,
+        }
+      )
+      .valueChanges.subscribe((result) => {
+        console.log(result);
+        this.projects = result.data.projects;
+      });
   }
 }

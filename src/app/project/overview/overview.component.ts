@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from 'src/app/models/Project';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectGQL, ProjectQuery } from 'src/generated/graphql';
 import { ProjectService } from '../project.service';
 
 @Component({
@@ -7,12 +8,10 @@ import { ProjectService } from '../project.service';
   templateUrl: './overview.component.html',
 })
 export class OverviewComponent implements OnInit {
-  constructor(public projectService: ProjectService) {}
+  constructor(
+    public route: ActivatedRoute,
+    public projectService: ProjectService
+  ) {}
 
-  project?: Project;
-  ngOnInit(): void {
-    this.projectService.currentProject?.subscribe(
-      (project) => (this.project = project)
-    );
-  }
+  ngOnInit(): void {}
 }

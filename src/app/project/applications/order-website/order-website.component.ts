@@ -226,8 +226,6 @@ export class OrderWebsiteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectServcie.currentProject?.subscribe(
-      (project) => (this.projectId = project._id)
-    );
+    this.projectId = this.projectServcie.currentProject?._id;
   }
 }

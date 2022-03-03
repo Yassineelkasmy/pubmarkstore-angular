@@ -1,0 +1,13 @@
+mutation CreateProject($project: CreateProjectDto!) {
+  createProject(project: $project) {
+    _id
+    name
+    userId
+    company_name
+    company_website
+    email
+    phone
+    description
+    social_links
+  }
+}

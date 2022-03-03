@@ -8,20 +8,7 @@ import { ProjectService } from '../project.service';
   templateUrl: './applications.component.html',
 })
 export class ApplicationsComponent implements OnInit {
-  constructor(
-    public prjectServcie: ProjectService,
-    public applicationService: ApplicationService
-  ) {}
+  constructor(public projectServcie: ProjectService) {}
 
-  applications?: Application[];
-
-  ngOnInit(): void {
-    this.prjectServcie.currentProject?.subscribe((project) => {
-      this.applicationService
-        .userProjectApplications(project._id)
-        .subscribe((apps) => {
-          this.applications = apps;
-        });
-    });
-  }
+  ngOnInit(): void {}
 }

@@ -1,7 +1,7 @@
 <div class="text-gray-900 font-semibold h-screen relative bg-gray-50 grid grid-cols-5">
    <div class="sm:col-span-5 md:col-span-3">
 
-    <form [formGroup]="createProjectForm" class="form-control ml-20 mt-16 mr-20 text-4xl leading-relaxed tracking-wide">
+    <form *ngIf="!loading" [formGroup]="createProjectForm" class="form-control ml-20 mt-16 mr-20 text-4xl leading-relaxed tracking-wide">
         <div class="flex stepper-name space-x-10">
             <img routerLink="../" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
             <p class="my-auto">
@@ -75,10 +75,13 @@
             </button>
         </div>
     </form>
-
+    <div *ngIf="loading" class="flex flex-col h-full text-lg mx-auto text-center" >
+        <app-loading></app-loading>
+     </div>
 
 
    </div>
+   
    <div class="sm:invisible md:visible col-span-2 grid grid-cols-2">
         <div></div>
         <div class="bg-indigo-600"></div>

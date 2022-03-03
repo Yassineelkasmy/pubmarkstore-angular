@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { ProjectQuery } from 'src/generated/graphql';
 import { ProjectService } from './project.service';
 
 @Component({
@@ -11,20 +10,15 @@ import { ProjectService } from './project.service';
 export class ProjectComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
-    public authService: AuthService,
-    public router: Router,
-    public projectService: ProjectService
+    public projectService: ProjectService,
+    public router: Router
   ) {}
+
+  project?: ProjectQuery;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
-      this.projectService.currentProject = new Observable((obs) => {
-        this.projectService
-          .getCurrentUserProject(params.get('name')!)
-          .subscribe((project) => {
-            obs.next(project);
-          });
-      });
+      this.projectService.setCurrentUserProject(params.get('name')!);
     });
   }
   currentPage(page: string): boolean {

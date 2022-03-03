@@ -1,0 +1,12 @@
+<div class="flex stepper-name space-x-10">
+    <img routerLink="../applications" class="cursor-pointer mt-1 w-5 h-5" src="../../../../../../assets/icons/close.png" alt="" srcset="">
+    <p class="my-auto font-normal mb-10">
+       Choose a type to continue
+    </p>
+</div>
+
+<div class="flex space-x-5 md:justify-around flex-col md:flex-row">
+    
+    <create-app-item [routerLink]="'../createwebapp'"  [title]="'Website'" [icon]="'web'" route='createwebapp'></create-app-item>
+    <create-app-item [title]="'Mobile App'" [icon]="'mobile'"></create-app-item>
+</div>

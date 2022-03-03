@@ -81,14 +81,85 @@ export type Query = {
 
 
 export type QueryProjectArgs = {
-  id: Scalars['String'];
+  name: Scalars['String'];
 };
+
+export type ProjectQueryVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type ProjectQuery = { __typename?: 'Query', project: { __typename?: 'Project', _id: string, name: string, userId: string, company_name: string, company_website: string, email: string, phone: string, description: string, social_links?: Array<string> | null, applications?: Array<{ __typename?: 'Application', name: string, description: string, type: number }> | null } };
+
+export type CreateProjectMutationVariables = Exact<{
+  project: CreateProjectDto;
+}>;
+
+
+export type CreateProjectMutation = { __typename?: 'Mutation', createProject: { __typename?: 'Project', _id: string, name: string, userId: string, company_name: string, company_website: string, email: string, phone: string, description: string, social_links?: Array<string> | null } };
 
 export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', name: string, description: string }> };
 
+export const ProjectDocument = gql`
+    query Project($name: String!) {
+  project(name: $name) {
+    _id
+    name
+    userId
+    company_name
+    company_website
+    email
+    phone
+    description
+    social_links
+    applications {
+      name
+      description
+      type
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ProjectGQL extends Apollo.Query<ProjectQuery, ProjectQueryVariables> {
+    document = ProjectDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CreateProjectDocument = gql`
+    mutation CreateProject($project: CreateProjectDto!) {
+  createProject(project: $project) {
+    _id
+    name
+    userId
+    company_name
+    company_website
+    email
+    phone
+    description
+    social_links
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CreateProjectGQL extends Apollo.Mutation<CreateProjectMutation, CreateProjectMutationVariables> {
+    document = CreateProjectDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const ProjectsDocument = gql`
     query Projects {
   projects {

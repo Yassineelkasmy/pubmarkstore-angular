@@ -7,6 +7,8 @@ import { UploadFieldComponent } from './upload-field/upload-field.component';
 import { UploadTaskComponent } from './upload-task/upload-task.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { AuthModule } from '@angular/fire/auth';
+import { DashboardNavbarComponent } from './dashboard-navbar/dashboard-navbar.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { AuthModule } from '@angular/fire/auth';
     UploadFieldComponent,
     UploadTaskComponent,
     UploaderComponent,
+    DashboardNavbarComponent,
+    LoadingComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   exports: [
@@ -25,6 +29,8 @@ import { AuthModule } from '@angular/fire/auth';
     UploadFieldComponent,
     UploadTaskComponent,
     UploaderComponent,
+    DashboardNavbarComponent,
+    LoadingComponent,
   ],
   providers: [AuthService],
 })

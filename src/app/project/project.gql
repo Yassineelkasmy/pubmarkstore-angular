@@ -1,0 +1,18 @@
+query Project($name: String!) {
+  project(name: $name) {
+    _id
+    name
+    userId
+    company_name
+    company_website
+    email
+    phone
+    description
+    social_links
+    applications {
+      name
+      description
+      type
+    }
+  }
+}

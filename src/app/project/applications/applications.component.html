@@ -2,7 +2,7 @@
     <p class="dashboard-title mb-10">
         My applications
     </p>
-    <button class="btn btn-primary bg-indigo-600 gap-2">
+    <button routerLink="../newapp" class="btn btn-primary bg-indigo-600 gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-layout-grid-add" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <rect x="4" y="4" width="6" height="6" rx="1"></rect>
@@ -10,18 +10,25 @@
             <rect x="4" y="14" width="6" height="6" rx="1"></rect>
             <path d="M14 17h6m-3 -3v6"></path>
          </svg>
+         
         New application
     </button>
  </div>
  
-<div *ngIf="applications?.length==0">
+<div *ngIf="projectServcie.currentProject?.applications?.length==0" class="w-full text-center py-10">
 
     <p class="text-2xl mb-10">
         You don`t have any applications yet, create one
     </p>
+    <button routerLink="../newapp" class="px-10 gap-2 btn btn-primary text-white bg-indigo-600 border-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-happy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <circle cx="12" cy="12" r="9"></circle>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+            <path d="M8 13a4 4 0 1 0 8 0m0 0h-8"></path>
+         </svg>
+        Order my first application
+    </button>
 </div>
 
-<div class="flex space-y-5 md:justify-around flex-col md:flex-row">
-        <create-app-item [routerLink]="'../createwebapp'"  [title]="'Website'" [icon]="'web'" route='createwebapp'></create-app-item>
-        <create-app-item [title]="'Mobile App'" [icon]="'mobile'"></create-app-item>
-</div>
