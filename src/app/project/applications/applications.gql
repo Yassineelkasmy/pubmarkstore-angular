@@ -1,0 +1,21 @@
+query ProjectApplications($projectId: String!) {
+  projectApplications(projectId: $projectId) {
+    _id
+    projectId
+    userId
+    name
+    description
+    type
+    imported_domain
+    domain
+    categories
+    features
+    status
+    state
+    deadline
+    estimated_price
+    price
+    preview
+    uptime
+  }
+}

@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat';
 import {
   AuthProvider,
   GoogleAuthProvider,
@@ -11,6 +12,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthUser } from '../models/AuthUser';
+import { from, map, Observable, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +26,16 @@ export class AuthService {
     private router: Router,
     private ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-    console.log('heeeeeer');
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
+
     this.afAuth.authState.subscribe((user) => {
       if (user) {
+        user.getIdTokenResult(true).then((token) => {
+          localStorage.setItem('token', token.token);
+          console.log(token.expirationTime);
+        });
+
         this.userData = user;
         this.currentUser = user as AuthUser;
         localStorage.setItem('user', JSON.stringify(this.userData));

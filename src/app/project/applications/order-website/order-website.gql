@@ -1,0 +1,15 @@
+mutation OrderWebsite($order: OrderWebsiteDto!) {
+  orderWebsite(order: $order) {
+    _id
+    name
+    description
+  }
+}
+
+query CheckDomain($domain: CheckDomainNameDto!) {
+  checkDomain(domain: $domain) {
+    DomainInfo {
+      domainAvailability
+    }
+  }
+}

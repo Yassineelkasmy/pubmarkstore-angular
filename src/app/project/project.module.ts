@@ -13,6 +13,7 @@ import { CreateProjectItemComponent } from './projects/createproject/create-proj
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectItemComponent } from './projects/createproject/project-item/project-item.component';
 import { NewappComponent } from './applications/application/newapp/newapp.component';
+import { AppItemComponent } from './applications/app-item/app-item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NewappComponent } from './applications/application/newapp/newapp.compon
     CreateprojectComponent,
     CreateProjectItemComponent,
     NewappComponent,
+    AppItemComponent,
   ],
   imports: [SharedModule, ProjectRoutingModule, ProjectRoutingModule],
   providers: [ProjectService],

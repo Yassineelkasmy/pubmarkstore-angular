@@ -20,21 +20,26 @@ export type Scalars = {
 export type Application = {
   __typename?: 'Application';
   _id: Scalars['String'];
-  categories: Array<Scalars['String']>;
-  deadline: Scalars['String'];
+  categories?: Maybe<Array<Scalars['String']>>;
+  deadline?: Maybe<Scalars['String']>;
   description: Scalars['String'];
-  domain: Scalars['String'];
+  domain?: Maybe<Scalars['String']>;
   estimated_price?: Maybe<Scalars['Float']>;
-  features: Array<Scalars['String']>;
-  imported_domain: Scalars['String'];
+  features?: Maybe<Array<Scalars['String']>>;
+  imported_domain?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   preview?: Maybe<Scalars['String']>;
   price?: Maybe<Scalars['Float']>;
   projectId: Scalars['String'];
-  state: Scalars['Float'];
-  status: Scalars['Float'];
+  state?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['Float']>;
   type: Scalars['Float'];
   uptime?: Maybe<Scalars['Float']>;
+  userId: Scalars['String'];
+};
+
+export type CheckDomainNameDto = {
+  domainName: Scalars['String'];
 };
 
 export type CreateProjectDto = {
@@ -47,14 +52,42 @@ export type CreateProjectDto = {
   social_links?: InputMaybe<Array<Scalars['String']>>;
 };
 
+export type DomainInfo = {
+  __typename?: 'DomainInfo';
+  domainAvailability: Scalars['String'];
+  domainName: Scalars['String'];
+};
+
+export type DomainNameAvailabilityResponse = {
+  __typename?: 'DomainNameAvailabilityResponse';
+  DomainInfo: DomainInfo;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createProject: Project;
+  orderWebsite: Application;
 };
 
 
 export type MutationCreateProjectArgs = {
   project: CreateProjectDto;
+};
+
+
+export type MutationOrderWebsiteArgs = {
+  order: OrderWebsiteDto;
+};
+
+export type OrderWebsiteDto = {
+  categories?: InputMaybe<Array<Scalars['String']>>;
+  deadline?: InputMaybe<Scalars['String']>;
+  description: Scalars['String'];
+  domain?: InputMaybe<Scalars['String']>;
+  features?: InputMaybe<Array<Scalars['String']>>;
+  imported_domain?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  projectId: Scalars['String'];
 };
 
 export type Project = {
@@ -75,14 +108,47 @@ export type Project = {
 
 export type Query = {
   __typename?: 'Query';
+  checkDomain: DomainNameAvailabilityResponse;
   project: Project;
+  projectApplications: Array<Application>;
   projects: Array<Project>;
+};
+
+
+export type QueryCheckDomainArgs = {
+  domain: CheckDomainNameDto;
 };
 
 
 export type QueryProjectArgs = {
   name: Scalars['String'];
 };
+
+
+export type QueryProjectApplicationsArgs = {
+  projectId: Scalars['String'];
+};
+
+export type ProjectApplicationsQueryVariables = Exact<{
+  projectId: Scalars['String'];
+}>;
+
+
+export type ProjectApplicationsQuery = { __typename?: 'Query', projectApplications: Array<{ __typename?: 'Application', _id: string, projectId: string, userId: string, name: string, description: string, type: number, imported_domain?: string | null, domain?: string | null, categories?: Array<string> | null, features?: Array<string> | null, status?: number | null, state?: number | null, deadline?: string | null, estimated_price?: number | null, price?: number | null, preview?: string | null, uptime?: number | null }> };
+
+export type OrderWebsiteMutationVariables = Exact<{
+  order: OrderWebsiteDto;
+}>;
+
+
+export type OrderWebsiteMutation = { __typename?: 'Mutation', orderWebsite: { __typename?: 'Application', _id: string, name: string, description: string } };
+
+export type CheckDomainQueryVariables = Exact<{
+  domain: CheckDomainNameDto;
+}>;
+
+
+export type CheckDomainQuery = { __typename?: 'Query', checkDomain: { __typename?: 'DomainNameAvailabilityResponse', DomainInfo: { __typename?: 'DomainInfo', domainAvailability: string } } };
 
 export type ProjectQueryVariables = Exact<{
   name: Scalars['String'];
@@ -103,6 +169,80 @@ export type ProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', name: string, description: string }> };
 
+export const ProjectApplicationsDocument = gql`
+    query ProjectApplications($projectId: String!) {
+  projectApplications(projectId: $projectId) {
+    _id
+    projectId
+    userId
+    name
+    description
+    type
+    imported_domain
+    domain
+    categories
+    features
+    status
+    state
+    deadline
+    estimated_price
+    price
+    preview
+    uptime
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ProjectApplicationsGQL extends Apollo.Query<ProjectApplicationsQuery, ProjectApplicationsQueryVariables> {
+    document = ProjectApplicationsDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const OrderWebsiteDocument = gql`
+    mutation OrderWebsite($order: OrderWebsiteDto!) {
+  orderWebsite(order: $order) {
+    _id
+    name
+    description
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class OrderWebsiteGQL extends Apollo.Mutation<OrderWebsiteMutation, OrderWebsiteMutationVariables> {
+    document = OrderWebsiteDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CheckDomainDocument = gql`
+    query CheckDomain($domain: CheckDomainNameDto!) {
+  checkDomain(domain: $domain) {
+    DomainInfo {
+      domainAvailability
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CheckDomainGQL extends Apollo.Query<CheckDomainQuery, CheckDomainQueryVariables> {
+    document = CheckDomainDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const ProjectDocument = gql`
     query Project($name: String!) {
   project(name: $name) {

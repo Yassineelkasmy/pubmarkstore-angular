@@ -9,8 +9,13 @@ import {
 import { OrderWebAppFeatures } from 'src/app/content/order-webapp-features.content';
 import { DomainNameRegex } from 'src/app/constants/validators.regex';
 import { WebsiteCategories } from 'src/app/content/website-categories.content';
-import { CheckDomainNameRequest } from 'src/app/dto/CheckDomainName.request';
-import { OrderWebsiteRequest } from 'src/app/dto/order-website.request';
+import {
+  CheckDomainGQL,
+  CheckDomainNameDto,
+  OrderWebsiteDto,
+  OrderWebsiteGQL,
+} from 'src/generated/graphql';
+
 import { CreateWebAppStep } from 'src/app/models/CreateWebAppStep';
 import { DomainNameAvailability } from 'src/app/models/domain-name/domain-name-availability.enum';
 import { ApplicationService } from 'src/app/services/application.service';
@@ -23,8 +28,9 @@ import Swal from 'sweetalert2';
 })
 export class OrderWebsiteComponent implements OnInit {
   constructor(
-    private applicationService: ApplicationService,
+    private orderWebsiteGql: OrderWebsiteGQL,
     private projectServcie: ProjectService,
+    private checkDomainGql: CheckDomainGQL,
     private formBuilder: FormBuilder
   ) {
     this.createWebAppForm = new FormGroup({
@@ -174,21 +180,20 @@ export class OrderWebsiteComponent implements OnInit {
   checkDomain() {
     if (this.domainValid()) {
       this.chekingDomain = true;
-      let checkDomainRequest: CheckDomainNameRequest = {
+      let checkDomainDto: CheckDomainNameDto = {
         domainName: this.createWebAppForm.get('domain')?.value,
       };
-      this.applicationService
-        .checkDomainNameAvailablity(checkDomainRequest)
-        .subscribe((resp) => {
-          console.log(resp);
+      this.checkDomainGql
+        .watch({ domain: checkDomainDto })
+        .valueChanges.subscribe((result) => {
           this.chekingDomain = false;
           if (
-            resp.DomainInfo.domainAvailability ==
+            result.data.checkDomain.DomainInfo.domainAvailability ==
             DomainNameAvailability.AVAILABLE
           ) {
             this.domainAvailable = true;
           } else if (
-            resp.DomainInfo.domainAvailability ==
+            result.data.checkDomain.DomainInfo.domainAvailability ==
             DomainNameAvailability.UNAVAILABLE
           ) {
             this.domainFailed = true;
@@ -197,7 +202,7 @@ export class OrderWebsiteComponent implements OnInit {
     }
   }
   orderWebsite() {
-    let req: OrderWebsiteRequest = {
+    let orderWebsiteDto: OrderWebsiteDto = {
       name: this.createWebAppForm.get('name')?.value,
       description: this.createWebAppForm.get('description')?.value,
       domain: this.createWebAppForm.get('domain')?.value,
@@ -218,14 +223,18 @@ export class OrderWebsiteComponent implements OnInit {
     }).then((swal) => {
       if (swal.isConfirmed) {
         Swal.showLoading();
-        this.applicationService.orderWebsite(req).subscribe((v) => {
-          Swal.close();
-        });
+        this.orderWebsiteGql
+          .mutate({ order: orderWebsiteDto })
+          .subscribe((result) => {
+            Swal.close();
+          });
       }
     });
   }
 
   ngOnInit(): void {
-    this.projectId = this.projectServcie.currentProject?._id;
+    this.projectServcie.currentProject$?.subscribe(
+      (project) => (this.projectId = project._id)
+    );
   }
 }

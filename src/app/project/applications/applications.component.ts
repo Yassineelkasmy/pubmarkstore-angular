@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Application } from 'src/app/models/application/Application';
-import { ApplicationService } from 'src/app/services/application.service';
+import {
+  ProjectApplicationsGQL,
+  ProjectApplicationsQuery,
+} from 'src/generated/graphql';
 import { ProjectService } from '../project.service';
 
 @Component({
@@ -8,7 +10,25 @@ import { ProjectService } from '../project.service';
   templateUrl: './applications.component.html',
 })
 export class ApplicationsComponent implements OnInit {
-  constructor(public projectServcie: ProjectService) {}
+  constructor(
+    public projectServcie: ProjectService,
+    private projectAppsGql: ProjectApplicationsGQL
+  ) {
+    this.projectAppsGql.watch();
+  }
 
-  ngOnInit(): void {}
+  apps?: ProjectApplicationsQuery['projectApplications'];
+  ngOnInit(): void {
+    this.projectServcie.currentProject$?.subscribe((project) => {
+      if (project) {
+        this.projectAppsGql
+          .watch({
+            projectId: project._id,
+          })
+          .valueChanges.subscribe(
+            (result) => (this.apps = result.data.projectApplications)
+          );
+      }
+    });
+  }
 }

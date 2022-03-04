@@ -1,5 +1,5 @@
 <p class="dashboard-title mb-10">
-    {{ projectService.currentProject?.name }}
+    {{ (projectService.currentProject$ | async)?.name}}
 </p>
     
 <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-10">

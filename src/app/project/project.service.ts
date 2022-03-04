@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { ProjectGQL, ProjectQuery } from 'src/generated/graphql';
 
 @Injectable({
@@ -6,14 +7,12 @@ import { ProjectGQL, ProjectQuery } from 'src/generated/graphql';
 })
 export class ProjectService {
   constructor(private projectGql: ProjectGQL) {}
-  public currentProject?: ProjectQuery['project'];
+  public currentProject$?: Observable<ProjectQuery['project']>;
 
   setCurrentUserProject(name: string) {
     console.log(name);
-    this.projectGql
+    this.currentProject$ = this.projectGql
       .watch({ name: name }, { pollInterval: 5000 })
-      .valueChanges.subscribe((result) => {
-        this.currentProject = result.data.project;
-      });
+      .valueChanges.pipe(map(({ data }) => data.project));
   }
 }

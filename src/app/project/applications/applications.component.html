@@ -15,7 +15,7 @@
     </button>
  </div>
  
-<div *ngIf="projectServcie.currentProject?.applications?.length==0" class="w-full text-center py-10">
+<div *ngIf="apps?.length==0" class="w-full text-center py-10">
 
     <p class="text-2xl mb-10">
         You don`t have any applications yet, create one
@@ -32,3 +32,11 @@
     </button>
 </div>
 
+
+<div *ngIf="apps?.length!>=1" class="w-full text-center py-10">
+
+    <p class="text-2xl mb-10">
+       All apps:
+    </p>
+    <app-app-item *ngFor="let app of apps"  [app]="app" ></app-app-item>
+</div>
