@@ -15,7 +15,7 @@
     @apply text-2xl font-semibold tracking-wide text-gray-600 bg-gray-50 input input-bordered input-lg;
   }
   .dashboard-title {
-    @apply text-3xl;
+    @apply text-3xl font-semibold;
   }
   .stepper-name {
     @apply text-2xl text-gray-600 font-normal;

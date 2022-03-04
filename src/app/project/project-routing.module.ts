@@ -22,7 +22,7 @@ const routes: Routes = [
         component: OverviewComponent,
       },
       {
-        path: 'applications',
+        path: 'apps',
         component: ApplicationsComponent,
       },
       {
