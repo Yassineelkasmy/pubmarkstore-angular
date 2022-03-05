@@ -26,6 +26,12 @@
   .project-menu-button {
     @apply btn justify-start capitalize hover:bg-slate-700 bg-transparent border-t-0 border-r-0 border-l-0 h-16 btn-wide gap-4 rounded-none;
   }
+  .side-nav {
+    @apply left-0 right-0 space-y-1;
+  }
+  .side-nav-item {
+    @apply flex btn btn-lg text-base bg-transparent border-none py-0 justify-start space-x-3 text-gray-600 normal-case font-semibold cursor-pointer hover:bg-gray-300 rounded-md pl-2 justify-items-center;
+  }
 }
 @layer utilities {
   .animation-delay-200 {

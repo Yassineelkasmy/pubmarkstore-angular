@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectQuery } from 'src/generated/graphql';
+import { AuthService } from '../auth/auth.service';
 import { ProjectService } from './project.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { ProjectService } from './project.service';
 export class ProjectComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
+    public authService: AuthService,
     public projectService: ProjectService,
     public router: Router
   ) {}

@@ -14,6 +14,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectItemComponent } from './projects/createproject/project-item/project-item.component';
 import { NewappComponent } from './applications/application/newapp/newapp.component';
 import { AppItemComponent } from './applications/app-item/app-item.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AppItemComponent } from './applications/app-item/app-item.component';
     CreateProjectItemComponent,
     NewappComponent,
     AppItemComponent,
+    SideNavComponent,
   ],
   imports: [SharedModule, ProjectRoutingModule, ProjectRoutingModule],
   providers: [ProjectService],
