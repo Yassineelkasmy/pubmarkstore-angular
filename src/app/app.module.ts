@@ -29,6 +29,8 @@ import { ApplicationService } from './services/application.service';
 import { FileUploadService } from './services/file-upload.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graph-ql/graph-ql.module';
+import { TechsComponent } from './views/landing/components/techs/techs.component';
+import { TechiconComponent } from './views/landing/components/techs/techicon/techicon.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { GraphQLModule } from './graph-ql/graph-ql.module';
     ContactComponent,
     FooterComponent,
     LoginComponent,
+    TechsComponent,
+    TechiconComponent,
   ],
   imports: [
     BrowserModule,
