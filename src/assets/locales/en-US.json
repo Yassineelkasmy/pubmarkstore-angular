@@ -1,0 +1,60 @@
+{
+    "top": {
+        "subtitle":"IT Design & Consulting",
+        "title":"A Team of Engineers that help you shape ideas",
+        "butto" :"Let`s talk"
+    },
+    "exclusive" :{
+        "title":"Exclusive Agency For Technology Provide Solution",
+        "subtitle":"Following reasons show advantages of adding PMS services to your lead businesses",
+        "feature1" :"Convert traffic into sales: Increase sales by showing true dynamics of your website. Build your online store’s trust using Social Proof & Urgency.",
+        "feature2":"Increase store trust: Realize importance of social proof in customer’s purchase decision.",
+        "feature3":"Growth guaranteed"
+    },
+    "services":{
+        "info":"What we can do",
+        "title":"We Provide IT Services",
+        "service1": {
+            "title":"Interface Design",
+            "description":"Bring interaction design to a new level creating from clickable prototypes to fully-functional simulations."
+        },
+        "service2": {
+            "title":"SEO & Backlinks",
+            "description":"Where we use search engines to market your product; through paid methods (Pay per Click (PPC) Services)"
+        },
+        "service3": {
+            "title":"Web Development",
+            "description":"Your website provides a place for interested users to learn more about your business, your products and services."
+        },
+        "service4": {
+            "title":"Mobile Development",
+            "description":"We are also working in mobile Development that is skillful and professional in user experience"
+
+        },
+        "service5": {
+            "title":"Digital Marketing",
+            "description":"The conviction is that businesses can successfully outshine their competitors with a strong website."
+            
+        },
+        "service6": {
+            "title":"Hosting",
+            "description":"High quality secured data centers and servers ready for your apps."
+            
+        }
+
+    },
+    "technologies": {
+        "title":"Technologies We Use",
+        "description" :"Powerfull tools for new ideas, We use all sorts of modern technologies so we can deliver the best solution for your Business, Maintainable, Scalable & Enjoyable user experience for your customers"
+    },
+    "newsletter" :{
+        "title":"Great Things In Business Are Never Done By One Person",
+        "button":"Subscribe Now"
+    },
+    "contact": {
+        "title":"We`d love to help you",
+        "subtitle":"We will respond to your question ASAP!",
+        "button":"Send"
+    }
+
+}
