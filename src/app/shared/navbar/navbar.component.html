@@ -10,30 +10,17 @@
     <div class="hidden px-2 lg:flex navbar-center">
         <div class="flex items-stretch">
           <app-navbar-item route="#services"  [routeName]="'Services'" >  </app-navbar-item>
-          <app-navbar-item route="#hosting" class="ml-4 rounded-lg" [routeName]="'Hosting'"> </app-navbar-item>
+          <app-navbar-item route="#hosting" class="ml-4 rounded-lg" [routeName]="'Marketing'"> </app-navbar-item>
           <app-navbar-item route="#contact" class="ml-4 rounded-lg" [routeName]="'Contact'"> </app-navbar-item>
                     
         </div>
     </div>
     <div class="navbar-end mr-5">
-      <div class="flex space-x-2 btn btn-ghost rounded-btn">
+      <div (click)="onClickAccount()" class="flex space-x-2 btn btn-ghost rounded-btn">
         <img class="w-8 h-8" src="../../../assets/icons/account.png" >
-        <p class="">Account</p>
+        <p class="">Sign Up</p>
       </div>
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" class="m-1 btn">Dropdown</div> 
-        <ul tabindex="0" class="text-gray-900 p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-          <li>
-            <a>Item 1</a>
-          </li> 
-          <li>
-            <a>Item 2</a>
-          </li> 
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
+      
       
     </div>
 </div>

@@ -1,5 +1,5 @@
 <div id="contact" class="px-16 py-10">
-      
+    <form action="" [formGroup]="contactForm">
     <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-10">
         <div data-aos="fade-up"
         data-aos-anchor-placement="top-bottom" >
@@ -12,16 +12,16 @@
                 </p>
                 <div class="h-3"></div>
                 <p class="text-gray-600 text-lg">
-                    We will respond to yout kind question ASAP!
+                    We will respond to your question ASAP!
                 </p>
 
                 <div class="h-5"></div>
         </div>
-            <input class="col-span-2 md:col-span-1 input input-bordered" type="text" placeholder="Name" required >
-            <input class="col-span-2 md:col-span-1 input input-bordered" type="text" placeholder="Company" >
-            <input class="col-span-2 md:col-span-1 input input-bordered" type="tel" placeholder="Phone" required>
-            <input class="col-span-2 md:col-span-1 input input-bordered" type="email" placeholder="Email" required>
-            <textarea class="col-span-2 textarea h-24 textarea-bordered" type="text" placeholder="Your message" required> </textarea>
+            <input formControlName="name" class="col-span-2 md:col-span-1 input input-bordered" type="text" placeholder="Name" required >
+            <input formControlName="company" class="col-span-2 md:col-span-1 input input-bordered" type="text" placeholder="Company" >
+            <input formControlName="phone" class="col-span-2 md:col-span-1 input input-bordered" type="tel" placeholder="Phone" required>
+            <input formControlName="email" class="col-span-2 md:col-span-1 input input-bordered" type="email" placeholder="Email" required>
+            <textarea formControlName="message" class="col-span-2 textarea h-24 textarea-bordered" type="text" placeholder="Your message" required> </textarea>
            <div class="col-span-2 lg:col-span-1">
               <button class="font-nomal text-lg w-full bg-indigo-600 hover:bg-indigo-800 capitalize btn px-10">Send</button>
            </div>
@@ -35,4 +35,5 @@
 
         
     </div>
+    </form>
   </div>
