@@ -55,6 +55,11 @@
         "title":"We`d love to help you",
         "subtitle":"We will respond to your question ASAP!",
         "button":"Send"
+    },
+    "footer":{
+        "rights":"All Rights Reserved",
+        "terms":"Privacy Terms & Conditions"
     }
+
 
 }
